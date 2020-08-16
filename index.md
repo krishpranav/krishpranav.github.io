@@ -24,8 +24,9 @@ Syntax highlighted code block
 **Bold** and _Italic_ and `Code` text
 
 [Link](url) and ![Image](src)
-![Image](https://github.com/krishpranav/krishpranav.github.io/blob/master/Images/pranavcertificate1.jpg)
+
 ```
+![Image](./Images/pranavcertificate1.jpg =100x20)
 
 For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
