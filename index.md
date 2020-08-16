@@ -26,7 +26,11 @@ Syntax highlighted code block
 [Link](url) and ![Image](src)
 
 ```
-![Image](./Images/pranavcertificate1.jpg =100x20)
+<img src="Images/pranavcertificate1.jpg" alt="drawing" width="320"/>
+<img src="Images/pranavcertificate2.jpg" alt="drawing" width="320"/>
+<img src="Images/pranavcertificate3.jpg" alt="drawing" width="320"/>
+<img src="Images/pranavcertificate4.jpg" alt="drawing" width="320"/>
+<img src="Images/pranavcertificate5.jpg" alt="drawing" width="320"/>
 
 For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
 
