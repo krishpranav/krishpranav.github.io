@@ -5,6 +5,9 @@ I know to use all linux system and now i am using the no one hacker os BlackArch
 I have putted few python hacking tools and some other hacking tools using various languages 
 My Github Link https://www.github.com/krishpranav
 
+If you want to join with me on github or want to learn hacking means contact me 
+I have gave my number and email below check it out!!
+email me if you want to join.
 
 ### Courses Completed
 
