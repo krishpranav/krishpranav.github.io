@@ -2,7 +2,7 @@
 
 I'm a 9th Grade Student Interested in Hacking and i love hacking.
 I know to use all linux system and now i am using the no one hacker os BlackArchLinux
-I have putted few python hacking tools and some other hacking tools using various languages 
+I have added few python hacking tools and some other hacking tools using various languages 
 My Github Link https://www.github.com/krishpranav
 
 If you want to join with me on github or want to learn hacking means contact me 
