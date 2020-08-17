@@ -17,7 +17,7 @@ Completed few udemy courses.
 <img src="Images/pranavcertificate5.jpg" alt="drawing" width="320"/>
 
 If you're interested on learning hacking or you want to join with me means contact me 
-I have gave my email and phone number below please check it out
+I have gave my email and phone number below please check it out.
 
 ### Contact
 
