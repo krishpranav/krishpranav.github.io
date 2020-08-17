@@ -1,6 +1,10 @@
 ## Welcome to Krishna Pranav Page
 
-I'm a 9th Grade Student Interested in Hacking tools, 
+I'm a 9th Grade Student Interested in Hacking and i love hacking.
+I know to use all linux system and now i am using the no one hacker os BlackArchLinux
+I have putted few python hacking tools and some other hacking tools using various languages 
+My Github Link https://www.github.com/krishpranav
+
 
 ### Courses Completed
 
