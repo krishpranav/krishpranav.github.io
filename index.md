@@ -1,4 +1,4 @@
-## Welcome to Krishna Pranav Page
+## Welcome to Krisna Pranav Website
 
 I'm a 9th Grade Student Interested in Hacking and i love hacking.
 I know to use all linux system and now i am using the no one hacker os BlackArchLinux
@@ -8,7 +8,7 @@ My Github Link https://www.github.com/krishpranav
 
 ### Courses Completed
 
-Completed few udemy courses.
+Completed few udemy courses and certificates of it.
 
 <img src="Images/pranavcertificate1.jpg" alt="drawing" width="320"/>
 <img src="Images/pranavcertificate2.jpg" alt="drawing" width="320"/>
