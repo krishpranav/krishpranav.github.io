@@ -1,37 +1,25 @@
-## Welcome to GitHub Pages
+## Welcome to Krisna Pranav Website
 
-You can use the [editor on GitHub](https://github.com/krishpranav/krishpranav.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+I'm a 9th Grade Student Interested in Hacking and i love hacking.
+I know to use all linux system such as kali linux, parrot os, cyborg linux, backbox etc... and now i am using the no 1 hacker's os BlackArchLinux
+I have added few python hacking tools and some other hacking tools using various languages 
+My Github Link https://www.github.com/krishpranav
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-### Markdown
+### Courses Completed
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Completed few udemy courses and certificates of it.
 
-```markdown
-Syntax highlighted code block
+<img src="Images/pranavcertificate1.jpg" alt="drawing" width="320"/>
+<img src="Images/pranavcertificate2.jpg" alt="drawing" width="320"/>
+<img src="Images/pranavcertificate3.jpg" alt="drawing" width="320"/>
+<img src="Images/pranavcertificate4.jpg" alt="drawing" width="320"/>
+<img src="Images/pranavcertificate5.jpg" alt="drawing" width="320"/>
 
-# Header 1
-## Header 2
-### Header 3
+If you're interested on learning hacking or you want to join with me means contact me 
+I have gave my email and phone number below please check it out.
 
-- Bulleted
-- List
+### Contact
 
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/krishpranav/krishpranav.github.io/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+### Email - krisna.pranav@gmail.com
+### Contact - +91 96002 26660
