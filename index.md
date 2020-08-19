@@ -8,7 +8,7 @@ My Github Link https://www.github.com/krishpranav
 
 ### Courses Completed
 
-Completed few udemy courses and certificates of it.
+Completed few courses and certificates of it.
 
 <img src="Images/pranavcertificate1.jpg" alt="drawing" width="320"/>
 <img src="Images/pranavcertificate2.jpg" alt="drawing" width="320"/>
@@ -19,6 +19,7 @@ Completed few udemy courses and certificates of it.
 
 If you're interested on learning hacking or you want to join with me means contact me 
 I have gave my email and phone number below please check it out.
+THANK YOU FOR VISITING MY WEBSITE
 
 ### Contact
 
