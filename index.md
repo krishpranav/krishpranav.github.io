@@ -1,11 +1,11 @@
 ## Welcome to Krisna Pranav Website
 
 I'm a 9th Grade Student Interested in Hacking and i love hacking.
-I am Living in India, Coimbatore
-The Linux system which i used for hacking: kali linux, parrot os, backbox, cyborg linux, anonymous os, deft linux, samurai web testing framework etc....
-Now i am using the no 1 hacker's os (linux) BlackArchLinux
+I am Living in India, Coimbatore.
+I have used many linux for hacking such as: kali linux, parrot os, backbox, cyborg linux, anonymous os, deft linux, samurai web testing framework etc....
+Now i am using the no 1 hacker's os BlackArchLinux
 Link to their website https://www.blackarch.org
-I have uploaded some hacking tool using python and various languages if your intersted in using means you can clone it or download any tools
+I have uploaded some hacking tool using python and other various languages if your intersted in using means you can clone it or download any tools
 
 ### Courses Completed
 
