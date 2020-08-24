@@ -20,7 +20,7 @@ I have uploaded some hacking tool using python and other various languages if yo
 <img src="Images/pranavcertificate7.jpg" alt="drawing" width="320"/>
 <img src="Images/pranavcertificate8.jpg" alt="drawing" width="320"/>
 
-### Certificate From StationX
+### Certificate From StationX (Cyber Security Company)
 <img src="Images/Krisna - The Complete Cyber Security Course - Volume 1 - Hackers Exposed Certificate.jpg" alt="drawing" width="320"/>
 <img src="Images/Krisna - The Complete Cyber Security Course - Volume 4 - End Point Protection Certificate.jpg" alt="drawing" width="320"/>
 
