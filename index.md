@@ -20,11 +20,11 @@ I have uploaded some hacking tool using python and other various languages if yo
 <img src="Images/pranavcertificate7.jpg" alt="drawing" width="320"/>
 <img src="Images/pranavcertificate8.jpg" alt="drawing" width="320"/>
 
-### Certificate From StationX [cyber security company]
+### Certificate From StationX
 <img src="Images/Krisna - The Complete Cyber Security Course - Volume 1 - Hackers Exposed Certificate.jpg" alt="drawing" width="320"/>
 <img src="Images/Krisna - The Complete Cyber Security Course - Volume 4 - End Point Protection Certificate.jpg" alt="drawing" width="320"/>
 
-### Certificate From zSecurity [cyber secuirty company]
+### Certificate From zSecurity  
 <img src="Images/pranavcertificate11.jpg" alt="drawing" width="320"/>
 <img src="Images/pranavcertificate12.jpg" alt="drawing" width="320"/>
 <img src="Images/pranavcertificate13.jpg" alt="drawing" width="320"/>
