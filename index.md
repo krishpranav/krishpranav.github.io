@@ -36,7 +36,8 @@ I have gave my email and phone number below please check it out.
 
 ### Follow me on social media
 - Github: github.com/krishpranav
-- linkedin: www.linkedin.com
+- Linkedin: www.linkedin.com
+- Twiter: https://twitter.com/krishpranav5
 ### THANK YOU FOR VISITING MY WEBSITE
 
 ### Contact
