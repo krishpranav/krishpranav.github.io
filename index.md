@@ -35,8 +35,8 @@ If you're interested on learning hacking or you want to join with me means conta
 I have gave my email and phone number below please check it out.
 
 ### Follow me on social media
-Github: github.com/krishpranav
-linkedin: www.linkedin.com
+- Github: github.com/krishpranav
+- linkedin: www.linkedin.com
 ### THANK YOU FOR VISITING MY WEBSITE
 
 ### Contact
