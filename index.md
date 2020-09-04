@@ -34,8 +34,7 @@ I have uploaded some hacking tool using python and other various languages if yo
 If you're interested on learning hacking or you want to join with me means contact me 
 I have gave my email and phone number below please check it out.
 
- ### Follow me on social media
-
+### FOLLOW ME ON SOCIAL MEDIA
 - Github: github.com/krishpranav
 - Linkedin: www.linkedin.com
 - Twiter: https://twitter.com/krishpranav5
