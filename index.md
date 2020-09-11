@@ -2,6 +2,7 @@
 
 I'm a 9th Grade Student Interested in Hacking and i love hacking.
 I am Living in India, Coimbatore.
+Languages I know = Python, C#, C++, JavaScript and a taste in PHP and SQL.
 I have used many linux for hacking such as: kali linux, parrot os, backbox, cyborg linux, anonymous os, deft linux, samurai web testing framework etc....
 Now i am using the no 1 hacker's os BlackArchLinux
 Link to their website https://www.blackarch.org
