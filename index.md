@@ -32,9 +32,6 @@ I have uploaded some hacking tool using python and other various languages if yo
 <img src="Images/pranavcertificate14.jpg" alt="drawing" width="320"/>
 <img src="Images/pranavcertificate15.jpg" alt="drawing" width="320"/>
 
-If you're interested on learning hacking or you want to join with me means contact me 
-I have gave my email and phone number below please check it out.
-
 ### FOLLOW ME ON SOCIAL MEDIA
 - Github: https://github.com/krishpranav
 - Linkedin: www.linkedin.com
@@ -43,6 +40,4 @@ I have gave my email and phone number below please check it out.
 ### THANK YOU FOR VISITING MY WEBSITE
 
 ### Contact
-
 ### Email - krisna.pranav@gmail.com
-### Contact - +91 96002 26660
