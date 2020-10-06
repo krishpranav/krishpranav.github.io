@@ -3,7 +3,7 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 const RESOURCES = {
-  "assets/AssetManifest.json": "ac08040f51837f41126c2c385c24471d",
+  "assets/AssetManifest.json": "fa64676a5a3685788bfe54b67e68c1f1",
 "assets/assets/anonymous.png": "6374bb327237907f99ed264f4fd8f413",
 "assets/assets/certificates/Krisna%2520-%2520The%2520Complete%2520Cyber%2520Security%2520Course%2520-%2520Volume%25201%2520-%2520Hackers%2520Exposed%2520Certificate.jpg": "db80695f68235a8d14a2bc150ebf7a4b",
 "assets/assets/certificates/Krisna%2520-%2520The%2520Complete%2520Cyber%2520Security%2520Course%2520-%2520Volume%25204%2520-%2520End%2520Point%2520Protection%2520Certificate.jpg": "ab11d78ecf5a6e647998136daa970608",
@@ -20,18 +20,17 @@ const RESOURCES = {
 "assets/assets/certificates/pranavcertificate6.jpg": "77ef1c321ccd24d11edc128436e04fd8",
 "assets/assets/certificates/pranavcertificate7.jpg": "49575340a74fd2e9f4e664bececea3b6",
 "assets/assets/certificates/pranavcertificate8.jpg": "21d32a20dff0acb765dfd56d8541b9d7",
-"assets/assets/facebook.png": "021ada146ffb7c1753557ff29618d04c",
 "assets/assets/github.png": "d22ee3727a7216019c3848df6eafa024",
 "assets/assets/linkedin.png": "926e2dcf5ab4220a359867614556df68",
 "assets/assets/moon.png": "a270b8a10d1a9a52441bf5a322dd1b86",
 "assets/assets/twitter.png": "8f35a40403a84631c4125c4f1859c7a6",
 "assets/FontManifest.json": "dc3d03800ccca4601324923c0b1d6d57",
-"assets/fonts/MaterialIcons-Regular.otf": "a68d2a28c526b3b070aefca4bac93d25",
+"assets/fonts/MaterialIcons-Regular.otf": "1288c9e28052e028aba623321f7826ac",
 "assets/NOTICES": "ee46c3b5c9f21ead637e489c91bfd715",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "b14fcf3ee94e3ace300b192e9e7c8c5d",
-"index.html": "9a3cb27d1657df060b452e804dccd1d7",
-"/": "9a3cb27d1657df060b452e804dccd1d7",
-"main.dart.js": "6b9274bc938201658629ac2467b9a7e5",
+"index.html": "b3ed7e07f1e38c32b411b3ba1aa34b53",
+"/": "b3ed7e07f1e38c32b411b3ba1aa34b53",
+"main.dart.js": "fad609946cf99fb11dd232702cfe7a0b",
 "manifest.json": "132b52890e73f04d8fb4abad432b3c77"
 };
 
