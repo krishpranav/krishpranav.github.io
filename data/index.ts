@@ -2,7 +2,7 @@ export const navItems = [
   { name: "About", link: "#about" },
   { name: "Projects", link: "#projects" },
   { name: "Contact", link: "#contact" },
-  { name: "Resume", link: "https://drive.google.com/file/d/17A2rRRSwoMepQYQgh5k9o8UTHy5V3nR0/view?usp=share_link" },
+  { name: "Resume", link: "https://drive.google.com/file/d/1Hzt1iTXUUURqjpyCfT0ZRi8AewmQuHUT/view?usp=sharing" },
 ];
 
 export const gridItems = [
@@ -14,7 +14,6 @@ export const gridItems = [
     imgClassName: "w-full h-full",
     titleClassName: "justify-end",
     img: "/grid.svg",
-    // spareImg: "/grid.svg",
   },
   {
     id: 2,
@@ -54,7 +53,7 @@ export const gridItems = [
     className: "md:col-span-3 md:row-span-2",
     imgClassName: "absolute right-0 bottom-0 md:w-96 w-60",
     titleClassName: "justify-center md:justify-start lg:justify-center",
-    // img: "/b5.svg",
+    img: "/b5.svg",
     spareImg: "/grid.svg",
   },
   {
@@ -191,11 +190,11 @@ export const workExperience = [
   },
   {
     id: 3,
-    title: "Flutter Developer - Instalane",
-    desc: "Developed three applications: Mood Tracker Application, Water Intake Tracking Application, To-do Management Application. Worked on core animation and other core functionality which ensures the engagement of user towards the application.",
-    timeline: "Oct 2024 - Present",
-    className: "md:col-span-2", 
-    techstack: "Techs Used: Flutter",
+    title: "Mid-Senior Flutter Mobile Application Developer - Salespanda",
+    desc: "Contributed across various junior and mid-senior roles to develop a comprehensive digital marketing automation tool aimed at maximizing user reach and boosting website traffic. This application enables users to implement advanced digital marketing strategies, empowering them to enhance profitability",
+    timeline: "Feb 2020 - Apr 2022, Nov 2024 - Present",
+    techstack: "Techs Used: Flutter, Swift",
+    className: "md:col-span-2",
     platforms: "Platforms: Android, iOS",
   },
   {
@@ -217,15 +216,6 @@ export const workExperience = [
   },
   {
     id: 6,
-    title: "Mid-Senior Flutter Mobile Application Developer - Salespanda",
-    desc: "Contributed across various junior and mid-senior roles to develop a comprehensive digital marketing automation tool aimed at maximizing user reach and boosting website traffic. This application enables users to implement advanced digital marketing strategies, empowering them to enhance profitability",
-    timeline: "Feb 2020 - Apr 2022",
-    techstack: "Techs Used: Flutter, Swift",
-    className: "md:col-span-2",
-    platforms: "Platforms: Android, iOS",
-  },
-  {
-    id: 7,
     title: "Flutter Developer - Digital Dukaan",
     desc: "Developed a robust digital marketing automation platform that empowers businesses to establish andgrow their online presence. This application provides a comprehensive suite of tools for online business management, enabling users to streamline operations, manage digital marketing, and optimize customer outreach.",
     timeline: "Sep 2022 - Jan 2023",
@@ -234,7 +224,7 @@ export const workExperience = [
     platforms: "Platforms: Android, iOS",
   },
   {
-    id: 8,
+    id: 7,
     title: "Security Engineer - Private Organization",
     desc: "Worked as a Security Engineer on contract, specializing in the development of advanced cybersecurity tools, including rootkits and various utilities for web security applications. Responsibilities included designing, implementing, and testing secure software components to enhance system resilience and protect against unauthorized access.",
     timeline: "Jan 2023 - Mar 2023",
@@ -242,7 +232,7 @@ export const workExperience = [
     className: "md:col-span-2",
   },
   {
-    id: 9,
+    id: 8,
     title: "Mid-Senior Level Flutter Developer - Connekt",
     desc: "Collaborated on the development of Connekt, a cutting-edge digital marketing application designed for the partners of HDFC Mutual Fund. This app empowers partners to effectively leverage digital marketing to expand their businesses. Connekt provides features for running multi-channel social media campaigns, sharing co-branded content, and executing targeted email campaigns. Additionally, it offers tools for building a personalized online presence through microsites, comprehensive campaign analytics, lead management, and access to a dedicated support team.",
     timeline: "Feb 2023 - Apr 2023",
@@ -251,7 +241,7 @@ export const workExperience = [
     className: "md:col-span-2",
   },
   {
-    id: 10,
+    id: 9,
     title: "Full-Stack Blockchain Mobile Developer - Private Organization",
     desc: "Developed key components for a blockchain-based trading application, specializing in cryptocurrency transactions with a focus on Bitcoin and Ethereum. Responsibilities included designing secure transaction workflows, implementing blockchain protocols, and ensuring robust functionality to support high-frequency trading and real-time data processing within the cryptocurrency market.",
     timeline: "Mar 2023 - Nov 2023",
@@ -260,7 +250,7 @@ export const workExperience = [
     className: "md:col-span-2",
   },
   {
-    id: 11,
+    id: 10,
     title: "Lead Full Stack Mobile Application Developer - Legal Trust Network",
     desc: "Led the development of a comprehensive, user-friendly application for LegalTrustNetwork, a platform that facilitates seamless connections between users and legal professionals. This fully legalized application streamlines court case management and provides an intuitive interface for users to interact with their advocates. Key contributions included designing a scalable architecture, implementing secure data handling practices, and optimizing user experience across multiple platforms.",
     timeline: "Apr 2023 - Jul 2023",
@@ -269,7 +259,7 @@ export const workExperience = [
     className: "md:col-span-2",
   },
   {
-    id: 12,
+    id: 11,
     title: "Full Stack Blockchain Developer - Private Organization",
     desc: "Specialized in developing secure, efficient smart contracts and distributed applications aimed at enabling safe transactions for users. Leveraged blockchain technology to create transparent and trustless systems that enhance security in financial exchanges. Key responsibilities included designing, implementing, and testing smart contracts and building user-facing interfaces to facilitate seamless interactions.",
     timeline: "May 2023 - Jul 2023",
@@ -278,7 +268,7 @@ export const workExperience = [
     className: "md:col-span-2",
   },
   {
-    id: 13,
+    id: 12,
     title: "Lead Full-Stack Developer - BeTimeful",
     desc: "Developed an application designed to help users reduce their social media usage by blocking the feeds of various social media platforms. This application is available across multiple platforms, including as an extension for Safari and Chrome, allowing desktop users to manage their social media habits effectively. Integrated native SDKs and advanced technologies to ensure seamless feed blocking and support cross-platform functionality",
     timeline: "Nov 2023 - Dec 2023",
@@ -287,7 +277,7 @@ export const workExperience = [
     className: "md:col-span-2",
   },
   {
-    id: 14,
+    id: 13,
     title: "Blockchain Developer - Private Organization(UK)",
     desc: "Contributed to the development of a secure, blockchain-based banking system for a private organization in the UK. This project leveraged blockchain technology to enhance transparency and security in financial transactions within the banking sector.",
     timeline: "Sep 2023 - Nov 2023",
@@ -296,7 +286,7 @@ export const workExperience = [
     className: "md:col-span-2",
   },
   {
-    id: 15,
+    id: 14,
     title: "Junior Game Developer - Private Organization(UK)",
     desc: "Worked as a Junior Game Developer, responsible for designing and developing engaging games using Unity and C#. Focused on creating immersive gameplay experiences and refining game mechanics to enhance user enjoyment and interaction.",
     timeline: "Nov 2023 - Dec 2023",
@@ -304,7 +294,7 @@ export const workExperience = [
     className: "md:col-span-2",
   },
   {
-    id: 16,
+    id: 15,
     title: "Lead iOS Developer - Student Connect",
     desc: "Developed a networking platform designed to support high school students in the U.S. college application process by connecting them with current college students. The app serves as a valuable resource for students and parents, providing guidance, insights, and peer support throughout the college admissions journey.",
     timeline: "Sep 2023 - Mar 2024",
@@ -313,7 +303,7 @@ export const workExperience = [
     className: "md:col-span-2",
   },
   {
-    id: 17,
+    id: 16,
     title: "Senior Full-Stack Mobile/Web Developer - EasyGold",
     desc: "Served as a Senior Full-Stack Developer for a mobile and web-based platform enabling users to trade and purchase gold. My responsibilities included developing a functional and responsive mobile application using Flutter, along with implementing and managing the backend infrastructure to ensure seamless performance. Additionally, I contributed to the web frontend, creating an intuitive and user-friendly interface.",
     timeline: "Jul 2023 - Apr 2024",
@@ -322,7 +312,7 @@ export const workExperience = [
     className: "md:col-span-2",
   },
   {
-    id: 18,
+    id: 17,
     title: "Flutter Developer - NeOffice",
     desc: "NeOffice supports the future of hybrid work by enabling employees to select their work location and schedule, and easily book office amenities through a user-friendly mobile app. Designed for efficient workforce management, it helps businesses streamline operations, enhance workspace efficiency, and ensure a smooth office re-entry for employees.",
     timeline: "Nov 2023 - Feb 2024",
@@ -331,7 +321,7 @@ export const workExperience = [
     className: "md:col-span-2",
   },
   {
-    id: 19,
+    id: 18,
     title: "iOS Developer - AffordRing",
     desc: "A specialized application designed to support wholesale marketers and other types of market professionals in managing and streamlining their operations.",
     timeline: "Apr 2024 - May 2024",
@@ -340,13 +330,22 @@ export const workExperience = [
     className: "md:col-span-2",
   },
   {
-    id: 20,
+    id: 19,
     title: "Mid Flutter Mobile Application Developer - Urus",
     desc: "Developed a service marketplace application that connects customers with providers based on location and service needs.",
     timeline: "Apr 2024 - Jun 2024",
     techstack: "Techs Used: Flutter",
     platforms: "Android, iOS",
     className: "md:col-span-2",
+  },
+  {
+    id: 20,
+    title: "Flutter Developer - Instalane",
+    desc: "Developed three applications: Mood Tracker Application, Water Intake Tracking Application, To-do Management Application. Worked on core animation and other core functionality which ensures the engagement of user towards the application.",
+    timeline: "Oct 2024 - Dec 2024",
+    className: "md:col-span-2", 
+    techstack: "Techs Used: Flutter",
+    platforms: "Platforms: Android, iOS",
   },
 ];
 
