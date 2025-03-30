@@ -1,5 +1,5 @@
-const WindiCSS = require("windicss-webpack-plugin");
-const { withAxiom } = require("next-axiom");
+const WindiCSS = require('windicss-webpack-plugin');
+const { withAxiom } = require('next-axiom');
 
 const ContentSecurityPolicy = `
   child-src *.google.com streamable.com;
@@ -17,66 +17,44 @@ const ContentSecurityPolicy = `
  * @type {import('next').NextConfig}
  */
 const config = {
+  output: 'standalone', // ✅ Fix invalid "export" issue
   images: {
+    unoptimized: true, // ✅ Required for static export
     domains: [
-      "cdn.discordapp.com",
-      "raw.githubusercontent.com",
-      "i.scdn.co",
-      "cdn-cf-east.streamable.com",
-      "source.unsplash.com",
-      "images.unsplash.com"
-    ]
+      'cdn.discordapp.com', // ✅ Discord
+      'raw.githubusercontent.com', // ✅ GitHub
+      'i.scdn.co', // ✅ Spotify
+      'cdn-cf-east.streamable.com', // ✅ Streamable
+      'source.unsplash.com',
+      'images.unsplash.com', // ✅ Unsplash
+    ],
   },
   async headers() {
     return [
       {
-        source: "/(.*)",
+        source: '/(.*)',
         headers: [
-          {
-            key: "Content-Security-Policy",
-            value: ContentSecurityPolicy.replace(/\n/g, "")
-          },
-          {
-            key: "Referrer-Policy",
-            value: "origin-when-cross-origin"
-          },
-          {
-            key: "Strict-Transport-Security",
-            value: "max-age=31536000; includeSubDomains; preload"
-          },
-          {
-            key: "Permissions-Policy",
-            value: "camera=(), microphone=(), geolocation=(), interest-cohort=()"
-          }
-        ]
-      }
+          { key: 'Content-Security-Policy', value: ContentSecurityPolicy.replace(/\n/g, '') },
+          { key: 'Referrer-Policy', value: 'origin-when-cross-origin' },
+          { key: 'Strict-Transport-Security', value: 'max-age=31536000; includeSubDomains; preload' },
+          { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()' },
+        ],
+      },
     ];
   },
   reactStrictMode: true,
   swcMinify: true,
-  webpack: (config, { dev, isServer }) => {
+  webpack: (config) => {
     config.plugins.push(new WindiCSS());
 
+    // ✅ Fix GLSL import issue
     config.module.rules.push({
       test: /\.(glsl|vs|fs|frag|vert)$/,
-      use: ["ts-shader-loader"]
+      use: ['raw-loader'],
     });
 
     return config;
   },
-  experimental: {
-    incrementalCacheHandlerPath: "next-cache"
-  },
-  env: {
-    AXIOM_DISABLED: process.env.NODE_ENV !== "production"
-  }
 };
 
 module.exports = withAxiom(config);
-
-module.exports = {
-	output: 'export',
-	images: {
-		unoptimized: true
-	}
-}

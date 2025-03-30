@@ -51,6 +51,7 @@
 		"nprogress": "^0.2.0",
 		"ogl-typescript": "^0.1.40",
 		"preact": "^10.10.0",
+		"raw-loader": "^4.0.2",
 		"react": "^17.0.2",
 		"react-dom": "^17.0.2",
 		"react-hot-toast": "^2.1.1",
@@ -74,14 +75,17 @@
 		"@types/react-dom": "^17.0.9",
 		"@typescript-eslint/eslint-plugin": "^5.38.0",
 		"@typescript-eslint/parser": "^5.38.0",
+		"autoprefixer": "^10.4.21",
 		"eslint": "8.10.0",
 		"eslint-config-next": "12.1.0",
 		"gray-matter": "^4.0.3",
 		"next-sitemap": "^2.5.4",
 		"node-fetch": "^3.2.10",
+		"postcss": "^8.5.3",
 		"prettier": "^2.4.1",
+		"tailwindcss": "^4.0.17",
 		"ts-shader-loader": "^1.0.6",
 		"typescript": "^5.0.4",
-		"windicss-webpack-plugin": "^1.7.8"
+		"windicss-webpack-plugin": "^1.8.0"
 	}
 }
