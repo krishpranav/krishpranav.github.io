@@ -1,8 +1,5 @@
-const WindiCSS = require('windicss-webpack-plugin');
-const { withAxiom } = require('next-axiom');
-
-const isGithubPages = process.env.GITHUB_ACTIONS || false;
-const repoName = 'your-repo-name'; // Change this to your GitHub repo name
+const WindiCSS = require("windicss-webpack-plugin");
+const { withAxiom } = require("next-axiom");
 
 const ContentSecurityPolicy = `
   child-src *.google.com streamable.com;
@@ -20,62 +17,59 @@ const ContentSecurityPolicy = `
  * @type {import('next').NextConfig}
  */
 const config = {
-	output: 'export', // Needed for static site deployment
-	assetPrefix: isGithubPages ? `/${repoName}/` : '',
-	basePath: isGithubPages ? `/${repoName}` : '',
-	trailingSlash: true, // Ensures all paths end with a slash for static hosting
+  images: {
+    domains: [
+      "cdn.discordapp.com",
+      "raw.githubusercontent.com",
+      "i.scdn.co",
+      "cdn-cf-east.streamable.com",
+      "source.unsplash.com",
+      "images.unsplash.com"
+    ]
+  },
+  async headers() {
+    return [
+      {
+        source: "/(.*)",
+        headers: [
+          {
+            key: "Content-Security-Policy",
+            value: ContentSecurityPolicy.replace(/\n/g, "")
+          },
+          {
+            key: "Referrer-Policy",
+            value: "origin-when-cross-origin"
+          },
+          {
+            key: "Strict-Transport-Security",
+            value: "max-age=31536000; includeSubDomains; preload"
+          },
+          {
+            key: "Permissions-Policy",
+            value: "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+          }
+        ]
+      }
+    ];
+  },
+  reactStrictMode: true,
+  swcMinify: true,
+  webpack: (config, { dev, isServer }) => {
+    config.plugins.push(new WindiCSS());
 
-	images: {
-		domains: [
-			'cdn.discordapp.com',
-			'raw.githubusercontent.com',
-			'i.scdn.co',
-			'cdn-cf-east.streamable.com',
-			'source.unsplash.com',
-			'images.unsplash.com',
-		],
-		unoptimized: true, // GitHub Pages doesn't support Next.js image optimization
-	},
+    config.module.rules.push({
+      test: /\.(glsl|vs|fs|frag|vert)$/,
+      use: ["ts-shader-loader"]
+    });
 
-	async headers() {
-		return [
-			{
-				source: '/(.*)',
-				headers: [
-					{
-						key: 'Content-Security-Policy',
-						value: ContentSecurityPolicy.replace(/\n/g, ''),
-					},
-					{
-						key: 'Referrer-Policy',
-						value: 'origin-when-cross-origin',
-					},
-					{
-						key: 'Strict-Transport-Security',
-						value: 'max-age=31536000; includeSubDomains; preload',
-					},
-					{
-						key: 'Permissions-Policy',
-						value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()',
-					},
-				],
-			},
-		];
-	},
-
-	reactStrictMode: true,
-	swcMinify: true,
-
-	webpack: (config, { dev, isServer }) => {
-		config.plugins.push(new WindiCSS());
-
-		config.module.rules.push({
-			test: /\.(glsl|vs|fs|frag|vert)$/,
-			use: ['ts-shader-loader'],
-		});
-
-		return config;
-	},
+    return config;
+  },
+  experimental: {
+    incrementalCacheHandlerPath: "next-cache"
+  },
+  env: {
+    AXIOM_DISABLED: process.env.NODE_ENV !== "production"
+  }
 };
 
 module.exports = withAxiom(config);

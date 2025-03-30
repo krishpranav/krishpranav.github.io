@@ -3,7 +3,7 @@ import { forwardRef } from 'react';
 
 import type { ButtonHTMLAttributes } from 'react';
 
-interface IconProps extends ButtonHTMLAttributes<HTMLButtonElement> {}
+type IconProps = ButtonHTMLAttributes<HTMLButtonElement>
 
 export const Icon = forwardRef<HTMLButtonElement, IconProps>(function Icon(
 	{ children, className, onClick, ...rest },

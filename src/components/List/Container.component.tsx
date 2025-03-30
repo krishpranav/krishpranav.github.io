@@ -1,6 +1,6 @@
 import type { WithChildren } from '~/types';
 
-interface ContainerProps extends WithChildren {}
+type ContainerProps = WithChildren
 
 export function Container({ children }: ContainerProps): JSX.Element {
 	return (
