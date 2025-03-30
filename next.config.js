@@ -47,7 +47,6 @@ const config = {
   webpack: (config) => {
     config.plugins.push(new WindiCSS());
 
-    // ✅ Fix GLSL import issue
     config.module.rules.push({
       test: /\.(glsl|vs|fs|frag|vert)$/,
       use: ['raw-loader'],
