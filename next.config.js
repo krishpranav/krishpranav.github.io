@@ -55,5 +55,3 @@ const config = {
     return config;
   },
 };
-
-module.exports = withAxiom(config);
