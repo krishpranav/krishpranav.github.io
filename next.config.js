@@ -73,3 +73,10 @@ const config = {
 };
 
 module.exports = withAxiom(config);
+
+module.exports = {
+	output: 'export',
+	images: {
+		unoptimized: true
+	}
+}

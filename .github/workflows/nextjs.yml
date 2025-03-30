@@ -1,12 +1,15 @@
-name: Deploy Next.js
+name: Deploy Next.js to GitHub Pages
 
 on:
   push:
     branches:
       - main
 
+permissions:
+  contents: write  # Required for GitHub Pages deployment
+
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -17,19 +20,27 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-          cache: "yarn"
+          cache: 'yarn'
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
-      - name: Lint and Build
+      - name: Lint and Fix (Optional)
+        run: yarn lint --fix || true  # Ignore lint errors
+
+      - name: Build and Export Next.js
         run: |
-          yarn lint --fix || echo "Ignoring ESLint errors..."
-          yarn build && yarn export
+          yarn build
+          yarn export
+
+      - name: Setup GitHub Pages
+        run: |
+          touch out/.nojekyll  # Prevent GitHub from ignoring _next folder
+          echo "yourcustomdomain.com" > out/CNAME || true  # Optional custom domain
 
       - name: Deploy to GitHub Pages
-        if: success()
-        uses: peaceiris/actions-gh-pages@v3
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./out
+          branch: gh-pages  # Deploy to GitHub Pages branch
+          folder: out  # Deploy the exported Next.js static files
+          clean: true  # Remove old files
