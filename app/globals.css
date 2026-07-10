@@ -1,0 +1,184 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------------------------------------------------------------------ */
+/* Palette — xAI system. Near-black canvas, white ink, accents rare.  */
+/* ------------------------------------------------------------------ */
+:root,
+:root[data-theme="dark"] {
+  --canvas: 10 10 10; /* #0a0a0a */
+  --elevated: 25 25 25; /* #191919 canvas-card */
+  --ink: 255 255 255; /* #ffffff */
+  --body: 218 219 223; /* #dadbdf */
+  --mute: 125 129 135; /* #7d8187 */
+  --faint: 90 94 100; /* dimmer than mute */
+  --hairline: 255 255 255; /* used at low alpha → reads ~#212327 */
+  --hairline-alpha: 0.14;
+  --grid-alpha: 0.04;
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --canvas: 250 250 250; /* #fafafa */
+  --elevated: 255 255 255;
+  --ink: 10 10 10; /* #0a0a0a */
+  --body: 60 60 60;
+  --mute: 125 125 125;
+  --faint: 160 160 160;
+  --hairline: 0 0 0;
+  --hairline-alpha: 0.12;
+  --grid-alpha: 0.05;
+  color-scheme: light;
+}
+
+* {
+  border-color: rgb(var(--hairline) / var(--hairline-alpha));
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: rgb(var(--canvas));
+  color: rgb(var(--ink));
+  overflow-x: hidden;
+  font-feature-settings: "ss01", "cv01";
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Hairline helpers */
+.hairline {
+  border: 1px solid rgb(var(--hairline) / var(--hairline-alpha));
+}
+.hairline-t {
+  border-top: 1px solid rgb(var(--hairline) / var(--hairline-alpha));
+}
+.hairline-b {
+  border-bottom: 1px solid rgb(var(--hairline) / var(--hairline-alpha));
+}
+
+/* Section eyebrow — Geist Mono spec-sheet label */
+.eyebrow {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgb(var(--mute));
+}
+
+/* Blinking terminal cursor — white block */
+.cursor::after {
+  content: "";
+  display: inline-block;
+  width: 0.5em;
+  height: 1.05em;
+  margin-left: 0.12em;
+  background: rgb(var(--ink));
+  vertical-align: -0.15em;
+  animation: blink 1.05s steps(1) infinite;
+}
+
+/* xAI pill buttons — the entire interactive shape system */
+.pill-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid rgb(var(--hairline) / 0.25);
+  background: transparent;
+  color: rgb(var(--ink));
+  font-weight: 400;
+  transition: border-color 0.25s ease, background-color 0.25s ease;
+}
+.pill-outline:hover {
+  border-color: rgb(var(--hairline) / 0.5);
+  background: rgb(var(--hairline) / 0.04);
+}
+.pill-filled {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid rgb(var(--ink));
+  background: rgb(var(--ink));
+  color: rgb(var(--canvas));
+  font-weight: 400;
+  transition: opacity 0.25s ease;
+}
+.pill-filled:hover {
+  opacity: 0.88;
+}
+
+/* Subtle full-page noise + grid backdrop */
+.backdrop-grid {
+  background-image:
+    linear-gradient(rgb(var(--hairline) / var(--grid-alpha)) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(var(--hairline) / var(--grid-alpha)) 1px, transparent 1px);
+  background-size: 64px 64px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 40%, transparent 100%);
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 40%, transparent 100%);
+}
+
+.noise {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+::selection {
+  background: rgb(var(--ink) / 0.18);
+  color: rgb(var(--ink));
+}
+
+/* Focus ring — white, for keyboard nav */
+:focus-visible {
+  outline: 2px solid rgb(var(--ink) / 0.7);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* Fine monochrome scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--hairline) / 0.14);
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--hairline) / 0.3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
