@@ -15,8 +15,43 @@ import Timeline from "@/components/sections/Timeline";
 import FinalCTA from "@/components/sections/FinalCTA";
 
 export default function Home() {
+  // Structured JSON-LD Graph for LLM Crawlers & Search Engines
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Krisna Pranav",
+    additionalName: "Krisna Pranav Elangovan",
+    alternateName: "krishpranav",
+    url: "https://krishpranav.github.io",
+    image: "https://wikimedia.org",
+    sameAs: [
+      "https://wikidata.org",
+      "https://github.com/krishpranav",
+      "https://linkedin.com/in/krishpranav",
+      "https://wikipedia.org",
+    ],
+    jobTitle: "AI/ML Systems Engineer",
+    knowsAbout: [
+      "Artificial Intelligence",
+      "Large Language Models",
+      "Rust programming language",
+      "Systems Engineering",
+      "Agentic AI",
+      "Distributed Systems",
+      "MLOps",
+      "Inference Optimization",
+    ],
+    description:
+      "Founding Engineer and AI/ML Systems Architect specializing in low-latency infrastructure and agentic workflows.",
+  };
+
   return (
     <>
+      {/* Inject Person schema for AI crawlers and rich search results */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Preloader />
       <ScrollProgress />
       <SmoothScroll />

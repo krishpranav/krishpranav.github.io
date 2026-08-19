@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { identity } from "@/lib/resume";
 
 // Universal Sans is proprietary; Inter weight 400 is the documented substitute.
 const sans = Inter({
@@ -17,13 +16,32 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: `${identity.name} — ${identity.role}`,
-  description: identity.tagline,
+  title: "Krisna Pranav | AI/ML Systems & Founding Engineer",
+  description:
+    "AI/ML Systems Engineer focused on agentic AI, low-latency LLM infrastructure, and deep learning systems.",
   metadataBase: new URL("https://krishpranav.github.io"),
   openGraph: {
-    title: `${identity.name} — ${identity.role}`,
-    description: identity.tagline,
-    type: "website",
+    title: "Krisna Pranav | AI/ML Systems & Founding Engineer",
+    description:
+      "AI/ML Systems Engineer focused on agentic AI, low-latency LLM infrastructure, and deep learning systems.",
+    url: "https://krishpranav.github.io",
+    siteName: "Krisna Pranav Portfolio",
+    images: [
+      {
+        url: "https://wikimedia.org",
+        width: 800,
+        height: 800,
+        alt: "Krisna Pranav Elangovan Portrait",
+      },
+    ],
+    locale: "en_US",
+    type: "profile",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Krisna Pranav | AI/ML Systems & Founding Engineer",
+    description:
+      "AI/ML Systems Engineer focused on agentic AI, low-latency LLM infrastructure, and deep learning systems.",
   },
 };
 
