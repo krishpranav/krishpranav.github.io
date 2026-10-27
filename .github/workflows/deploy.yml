@@ -45,3 +45,15 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
+  # Tells Bing (and through it ChatGPT search and Copilot), Yandex and other IndexNow
+  # engines that the site changed. Google does not use IndexNow; it reads the sitemap.
+  indexnow:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping IndexNow
+        run: |
+          curl -s -o /dev/null -w "IndexNow: HTTP %{http_code}\n" -X POST "https://api.indexnow.org/indexnow" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d '{"host":"krishpranav.github.io","key":"0dc0e93055b0bfa277066d21e0eb5266","keyLocation":"https://krishpranav.github.io/0dc0e93055b0bfa277066d21e0eb5266.txt","urlList":["https://krishpranav.github.io/","https://krishpranav.github.io/llms.txt","https://krishpranav.github.io/llms-full.txt","https://krishpranav.github.io/Krisna_Pranav_Resume.pdf"]}'

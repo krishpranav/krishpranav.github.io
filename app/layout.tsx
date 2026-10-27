@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist_Mono, Onest } from "next/font/google";
 import { identity } from "@/lib/resume";
+import { SITE, seoDescription, seoTitle } from "@/lib/seo";
 import "./globals.css";
 
 const onest = Onest({
@@ -17,24 +18,34 @@ const mono = Geist_Mono({
   display: "swap",
 });
 
-const title = `${identity.name}, Senior AI/ML Engineer in Singapore`;
-const description =
-  "I’m Krisna, a senior AI/ML engineer at Turing, building agent infrastructure from Singapore. I’ve been coding since 6th grade.";
+const title = seoTitle;
+const description = seoDescription;
 
 export const metadata: Metadata = {
   metadataBase: new URL(identity.links.site),
   title,
   description,
-  alternates: { canonical: "/" },
+  applicationName: identity.name,
+  authors: [{ name: identity.name, url: identity.links.site }],
+  creator: identity.name,
+  publisher: identity.name,
+  // One URL form everywhere: the canonical, og:url, the sitemap and the structured data.
+  alternates: { canonical: SITE },
+  // Full snippets and large image previews in search results.
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-snippet": -1, "max-image-preview": "large", "max-video-preview": -1 },
+  },
   openGraph: {
     title,
     description,
-    url: identity.links.site,
+    url: SITE,
     siteName: identity.name,
     locale: "en_US",
     type: "profile",
   },
-  twitter: { card: "summary_large_image", title, description },
+  twitter: { card: "summary_large_image", title, description, creator: identity.links.xHandle, site: identity.links.xHandle },
 };
 
 // The paper token (oklch 99.3% 0.002 270) as hex, for the browser chrome.

@@ -3,9 +3,24 @@ import { Portrait } from "@/components/primitives/Portrait";
 import { SocialLinks } from "@/components/primitives/Social";
 import { identity } from "@/lib/resume";
 
-// The role stays on one line, so the head steps down evenly.
-const ROLE = "AI/ML engineer";
-const [beforeRole, afterRole] = identity.headline.split(ROLE);
+// Phrases the head never breaks inside, my name and my role, so it steps down evenly.
+// Below 360px my name is wider than the line, and on a phone the role would leave
+// "senior" alone, so there each may break.
+const TOGETHER = [
+  { phrase: `${identity.first} ${identity.last}`, cls: "min-[360px]:whitespace-nowrap" },
+  { phrase: "AI/ML engineer", cls: "md:whitespace-nowrap" },
+];
+const pattern = new RegExp(`(${TOGETHER.map((t) => t.phrase.replace(/[/]/g, "\\/")).join("|")})`);
+const headline = identity.headline.split(pattern).map((part, i) => {
+  const keep = TOGETHER.find((t) => t.phrase === part);
+  return keep ? (
+    <span key={i} className={keep.cls}>
+      {part}
+    </span>
+  ) : (
+    part
+  );
+});
 
 /* Who I am, set bold, beside my portrait shown whole: how long I've been at it, and the
    ways to reach me. */
@@ -17,18 +32,8 @@ export default function Hero() {
       className="relative pb-16 pt-[calc(var(--nav-h)+var(--space-2xl))] md:flex md:min-h-[min(100svh,1000px)] md:items-center md:py-[calc(var(--nav-h)+var(--space-xl))]"
     >
       <div className="container flex flex-col gap-14 md:flex-row md:items-center md:justify-center md:gap-24">
-        <div className="min-w-0 md:max-w-[36rem] md:flex-1">
-          <h1 className="rise max-w-[17ch] t-intro">
-            {afterRole === undefined ? (
-              identity.headline
-            ) : (
-              <>
-                {beforeRole}
-                <span className="whitespace-nowrap">{ROLE}</span>
-                {afterRole}
-              </>
-            )}
-          </h1>
+        <div className="min-w-0 md:max-w-[44rem] md:flex-1">
+          <h1 className="rise max-w-[19ch] t-intro max-md:[text-wrap:pretty]">{headline}</h1>
           <p className="rise mt-6 t-lead text-muted" style={{ "--i": 1 } as React.CSSProperties}>
             {identity.statement}
           </p>

@@ -8,31 +8,10 @@ import Path from "@/components/sections/Path";
 import Principles from "@/components/sections/Principles";
 import Story from "@/components/sections/Story";
 import Work from "@/components/sections/Work";
-import { identity, roles } from "@/lib/resume";
+import { structuredData } from "@/lib/seo";
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  name: identity.name,
-  alternateName: "krishpranav",
-  url: identity.links.site,
-  image: `${identity.links.site}/me/illustrated-1200.jpg`,
-  email: `mailto:${identity.links.email}`,
-  jobTitle: "Senior Software Engineer, AI/ML",
-  worksFor: { "@type": "Organization", name: roles[0].company },
-  address: { "@type": "PostalAddress", addressLocality: "Singapore", addressCountry: "SG" },
-  sameAs: [identity.links.github, identity.links.linkedin, identity.links.x],
-  knowsAbout: [
-    "Agentic AI",
-    "LLM orchestration",
-    "Retrieval-augmented generation",
-    "Distributed systems",
-    "Rust",
-    "Go",
-    "Python",
-    "MLOps",
-  ],
-};
+// The site, this page as my profile page, and me, as one linked graph (lib/seo.ts).
+const jsonLd = structuredData();
 
 export default function Home() {
   return (

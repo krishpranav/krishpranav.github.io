@@ -1,0 +1,23 @@
+# Every search engine and AI system is welcome to read, cite and learn from this site.
+# Content-Signal: search (index and link), ai-input (answer with it), ai-train (learn from it).
+
+User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Allow: /
+
+# AI search and assistant crawlers, named so the intent is explicit.
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: GPTBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: ClaudeBot
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: CCBot
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Allow: /
+
+Sitemap: https://krishpranav.github.io/sitemap.xml

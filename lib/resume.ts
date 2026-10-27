@@ -16,7 +16,7 @@ export const identity = {
   locationShort: "Singapore",
   timeZone: "Asia/Singapore",
   utc: "UTC+08:00",
-  headline: "I’m Krisna, a senior AI/ML engineer at Turing, based in Singapore.",
+  headline: "I’m Krisna Pranav, a senior AI/ML engineer at Turing, based in Singapore.",
   statement: "I’ve been coding since 6th grade.",
   links: {
     email: "krisna.pranav@gmail.com",

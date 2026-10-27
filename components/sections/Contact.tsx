@@ -68,7 +68,7 @@ export default function Contact() {
               <a
                 href={href}
                 target="_blank"
-                rel="noopener noreferrer"
+                rel={key === "resume" ? "noopener noreferrer" : "me noopener noreferrer"}
                 className="group flex min-h-20 items-center gap-3 text-lg font-medium sm:pr-6 lg:px-6"
               >
                 <span className="text-muted transition-colors duration-[var(--dur-short)] group-hover:text-ink">{mark}</span>

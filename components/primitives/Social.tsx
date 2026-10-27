@@ -31,7 +31,7 @@ export function SocialLinks({ className }: { className?: string }) {
     <ul aria-label="Find me on" className={clsx("flex items-center gap-1", className)}>
       {SOCIALS.map((s) => (
         <li key={s.id}>
-          <a href={s.href} target="_blank" rel="noopener noreferrer" aria-label={`${s.label}, ${s.handle}`} className="social">
+          <a href={s.href} target="_blank" rel="me noopener noreferrer" aria-label={`${s.label}, ${s.handle}`} className="social">
             <SocialMark id={s.id} />
           </a>
         </li>

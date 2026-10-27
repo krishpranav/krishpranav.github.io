@@ -8,7 +8,7 @@
   --text-2xl: 1.953rem;
   --text-3xl: 2.441rem;
   --text-hero: clamp(3rem, 2rem + 4.6vw, 6rem);
-  --text-intro: clamp(2.5rem, 1.6rem + 2.8vw, 4.25rem);
+  --text-intro: clamp(2.25rem, 1.6rem + 2.8vw, 4.25rem);
   --text-section: clamp(2.5rem, 1.6rem + 3.2vw, 4.5rem);
   --text-statement: clamp(1.875rem, 1.2rem + 2.9vw, 4rem);
   --text-figure: clamp(3rem, 2rem + 4vw, 5.5rem);
