@@ -17,5 +17,31 @@
     "paths": { "@/*": ["./*"] }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules",
+    "target",
+    // Retired by the Studio redesign and no longer imported; kept until the owner deletes them.
+    "components/three",
+    "components/sections/Interlude.tsx",
+    "components/sections/Proof.tsx",
+    "components/shell/Preloader.tsx",
+    "components/shell/GridOverlay.tsx",
+    "components/shell/ScrollProgress.tsx",
+    "components/primitives/FitText.tsx",
+    "lib/boot.ts",
+    "lib/motion.ts",
+    // Retired by the custom rework (demo widgets, the Studio primitives and sections).
+    "components/diagrams",
+    "components/sections/cases",
+    "components/sections/Shipped.tsx",
+    "components/sections/Craft.tsx",
+    "components/primitives/Wordmark.tsx",
+    "components/primitives/IndexRow.tsx",
+    "components/primitives/Plate.tsx",
+    "components/primitives/SectionHeader.tsx",
+    "components/primitives/Icon.tsx",
+    "components/sections/Companies.tsx",
+    "components/primitives/Avatar.tsx",
+    "lib/hedvig.ts"
+  ]
 }

@@ -1,51 +1,674 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Hallmark · shape: a life in chapters (hero, story with my employers' marks inline, things I've built, upstream, every role, how I work, off the clock, the cities stack, hello) · genre: editorial · theme: custom · redesign: full · job: hire · idea: "my life in code, told by me, from a 6th-grader's first program to the systems I build in Singapore today" · vibe: "calm, personal, exact, quiet like Apple, first person"
+ * paper: oklch(99.3% 0.002 270) · accent: oklch(21% 0.006 270), ink is the only signal · display: Onest 600 · body: Onest 400 · hero: split, my name and role set bold with 6th grade beneath, the actions and my accounts, beside my illustrated portrait shown whole · nav: translucent edge-aligned bar, wordmark, three links and one pill · footer: colophon line · imagery: my portrait, drawn in a hand-painted anime style (my own image), shown whole; official employer and project marks in one monochrome mask, set inline in my story, on the tiles and in the role list; my accounts, the labs I work with, my tools, games and trades as their own marks; the cities as pixel panoramas in a stack (San Francisco the owner's, Bengaluru and Singapore painted to match it by scripts/cities.mjs) · signature: my illustrated portrait at Marina Bay, shown whole in a crisp frame
+ * axes: light/grotesk-sans/neutral · posture: restrained · contrast: pass · fold: pass · v2.0.0 */
+/* Hallmark · pre-emit critique: P4 H5 E4 S4 R5 V5 · weakest: S, a split hero is a common shape; my illustrated portrait shown whole, "since 6th grade" and the first-person story make it only mine */
+/* Hallmark · hero-review: fix · 5 findings · 4 resolved 1 partial (the logo row left the hero; the portrait is the object at 258px and sharpens on load on every device; one Email me per screen; the centred stack stays, by the owner's ask) */
+/* Hallmark · finish-review: subagent · 8 findings · 8 resolved · gap: the copy swap test is partial ("Every role since 2017." and the statement head are mine; "Things I've built.", "Say hello." and "Tools I reach for" stay plain on purpose, Apple-calm) */
+/* Hallmark · finish-review-2: subagent · 8 findings · 8 resolved · gap: none (the portrait is lifted off the wall with Apple Vision, graded and set in tilting layers; the illustrated slot waits for the owner's Ghibli image) */
+/* Hallmark · waive 23 · the accent token is the ink, so the headline's own ink is measured as accent · the page is monochrome on purpose, and nothing paints colour but my portrait */
+/* Hallmark · dropped onClick={kill}, onClick={() => setCount((c) => (c === 4 ? 5 : 4))}, onMouseEnter={() => setHover(i)}, onMouseLeave={() => setHover(null)}, onClick={() => setLevel(l)} · the owner retired the demo widgets in every case; the work is told in words, logos and real figures */
+/* Hallmark · dropped onToggleGrid={toggleGrid}, onClick={onPalette} · the G grid overlay is gone, and the command menu now opens from ⌘K or the footer's button */
+/* Hallmark · dropped {CASE_ANCHOR[role.caseId]}, onClick={onToggle}, onToggle={() => setOpen((o) => (o === r.id ? null : r.id))} · the experience rows are native details now and each case keeps its own anchor */
+/* Hallmark · dropped Selected work, Craft, Open source, Path · the old section labels; every section now opens with its own first-person head */
+/* Hallmark · dropped #search, the latent-field interlude and its HUD figures (12,000 points, scan times) · WebGL ambience is not this page's material and its numbers were simulations */
+/* Hallmark · dropped the previous résumé's figures (0.95+ recall@10, under 50MB, under 300ms, under 50ms) · the owner chose to show only what the latest résumé states */
+/* Hallmark · reworded the heads into my own voice ("Systems, shown working." to "Things I've built.", "Fixes merged upstream." to "I fix things upstream.", "8+ years, most recent first." to "Every role since 2017.", "Let's build the hard part." to "Say hello.", "The platform side of applied AI." to "Tests, evals and tracing are part of the feature.") · the owner asked for the page in first person */
+/* Hallmark · reworded "Agents that resume. Not restart." to "I build agents that pick up where they failed.", "Zero downtime." to "Nothing went down.", "From the first commit to the product people use." to "I was the first engineer, from the first commit.", "Fast first tokens, under real load." to "I kept first tokens fast, under real load." · first person, the same claims */
+/* Hallmark · dropped #work · as a literal link in the old hero; the nav and the menu still go to #work, from nav-links.ts */
+/* Hallmark · reworded "Krisna Pranav Krisna Pranav" and "Your cursor was a query. Here is how an index answers it." to "I've been coding since 6th grade." · the owner's brand line, in first person */
+/* Hallmark · reworded "Stop leaking objc retains in with_webview" to "I stopped Tauri's webview from leaking Objective-C retains." and "Refuse WebUI navigations that crash the browser" to "I made Playwright refuse navigations that crash Chromium." · first person, the same two merged fixes */
+/* Hallmark · reworded "AI & agents", "Distributed systems", "Cloud & MLOps", "Backend & data", and "1,501 contributions in the last year" from heads into terms and a sentence · the four are terms in "Tools I reach for", and the count is said in a sentence in the dark chapter */
+/* Hallmark · dropped 21:56, 05:30, 0.11, 93ms, 100%, 1%, 0%, 50%, 5%, 25%, 39053905, 39063909, 39133913 · the clock reads Singapore time in 12-hour form now, the rest were the retired widgets' simulated values and the diff's paired line numbers, now one column */
+/* Hallmark · reworded "12,000" and "0.95+" out of the page · the interlude's point count and the old résumé's recall figure, both retired on the records above */
+@import "tailwindcss";
+@import "./tokens.css";
+@import "./base.css" layer(base);
 
-/* ------------------------------------------------------------------ */
-/* Palette — xAI system. Near-black canvas, white ink, accents rare.  */
-/* ------------------------------------------------------------------ */
-:root,
-:root[data-theme="dark"] {
-  --canvas: 10 10 10; /* #0a0a0a */
-  --elevated: 25 25 25; /* #191919 canvas-card */
-  --ink: 255 255 255; /* #ffffff */
-  --body: 218 219 223; /* #dadbdf */
-  --mute: 125 129 135; /* #7d8187 */
-  --faint: 90 94 100; /* dimmer than mute */
-  --hairline: 255 255 255; /* used at low alpha → reads ~#212327 */
-  --hairline-alpha: 0.14;
-  --grid-alpha: 0.04;
-  color-scheme: dark;
-}
-
-:root[data-theme="light"] {
-  --canvas: 250 250 250; /* #fafafa */
-  --elevated: 255 255 255;
-  --ink: 10 10 10; /* #0a0a0a */
-  --body: 60 60 60;
-  --mute: 125 125 125;
-  --faint: 160 160 160;
-  --hairline: 0 0 0;
-  --hairline-alpha: 0.12;
-  --grid-alpha: 0.05;
-  color-scheme: light;
-}
-
-* {
-  border-color: rgb(var(--hairline) / var(--hairline-alpha));
+@theme {
+  --breakpoint-*: initial;
+  --breakpoint-sm: 40rem;
+  --breakpoint-md: 60rem;
+  --breakpoint-lg: 80rem;
+  --breakpoint-xl: 90rem;
 }
 
 html {
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
+  scroll-padding-top: calc(var(--nav-h) + var(--space-lg));
+}
+body {
+  letter-spacing: -0.005em;
+}
+h1,
+h2,
+h3 {
+  font-weight: 600;
+  color: inherit;
 }
 
-body {
-  background: rgb(var(--canvas));
-  color: rgb(var(--ink));
-  overflow-x: hidden;
-  font-feature-settings: "ss01", "cv01";
+@layer components {
+  .cols {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: var(--gap-columns);
+  }
+  @media (width >= 60rem) {
+    .cols {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+    }
+  }
+
+  /* Type roles. */
+  .t-hero {
+    font-size: var(--text-hero);
+    line-height: 1.02;
+    letter-spacing: var(--tracking-display);
+  }
+  .t-intro {
+    font-size: var(--text-intro);
+    line-height: 1.04;
+    letter-spacing: var(--tracking-display);
+  }
+  .t-section {
+    font-size: var(--text-section);
+    line-height: 1.04;
+    letter-spacing: var(--tracking-section);
+  }
+  .t-statement {
+    font-size: var(--text-statement);
+    line-height: 1.14;
+    letter-spacing: var(--tracking-statement);
+    font-weight: 600;
+  }
+  .life-line {
+    font-size: var(--text-line);
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+  }
+  .t-title {
+    font-size: var(--text-title);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+  .t-figure {
+    font-size: var(--text-figure);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    font-weight: 600;
+  }
+  .t-lead {
+    font-size: var(--text-lead);
+    line-height: 1.38;
+    letter-spacing: -0.012em;
+  }
+
+  /* Pill controls. One filled recipe (ink), one quiet one (grey). */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-xs);
+    min-height: 48px;
+    padding: 0 var(--space-lg);
+    border: 0;
+    border-radius: var(--radius-pill);
+    background: var(--color-paper-2);
+    color: var(--color-ink);
+    font: 500 var(--text-md) / 1 var(--font-body);
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+      background-color var(--dur-short) var(--ease-out),
+      transform var(--dur-micro) var(--ease-out);
+  }
+  .btn:hover {
+    background: var(--color-paper-3);
+  }
+  .btn:active {
+    transform: scale(0.98);
+  }
+  .btn:focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 3px;
+  }
+  .btn:disabled,
+  .btn[aria-disabled="true"] {
+    opacity: 0.55;
+    cursor: not-allowed;
+    transform: none;
+  }
+  .btn--primary {
+    background: var(--btn-fill, var(--color-ink));
+    color: var(--btn-ink, var(--color-paper));
+  }
+  .btn--primary:hover {
+    background: var(--btn-fill-hover, var(--color-ink-2));
+  }
+  .btn--sm {
+    min-height: 36px;
+    padding: 0 var(--space-md);
+    font-size: var(--text-sm);
+  }
+
+  .link {
+    text-decoration-line: underline;
+    text-decoration-color: transparent;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.24em;
+    transition:
+      text-decoration-color var(--dur-short) var(--ease-out),
+      color var(--dur-short) var(--ease-out);
+  }
+  .link:hover {
+    text-decoration-color: currentColor;
+  }
+
+  /* My accounts: each network's mark on a 44px round target. */
+  .social {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-pill);
+    color: var(--color-muted);
+    transition:
+      color var(--dur-short) var(--ease-out),
+      background-color var(--dur-short) var(--ease-out),
+      transform var(--dur-micro) var(--ease-out);
+  }
+  .social:hover {
+    color: var(--color-ink);
+    background: var(--color-paper-2);
+  }
+  .social:active {
+    transform: scale(0.94);
+  }
+  .social:focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 2px;
+  }
+
+  /* Official marks, one treatment: the file is a mask, the colour is the text colour. */
+  .logo {
+    display: block;
+    flex-shrink: 0;
+    height: var(--h);
+    aspect-ratio: var(--ratio);
+    background-color: currentColor;
+    mask: var(--src) center / contain no-repeat;
+  }
+  .mark-inline {
+    display: inline-block;
+    margin-right: 0.2em;
+    vertical-align: -0.06em;
+  }
+  .logo--inline {
+    display: inline-block;
+    vertical-align: var(--drop, 0);
+    margin-inline: 0.04em;
+  }
+
+  .tile {
+    border-radius: var(--radius-card);
+    background: var(--color-paper-2);
+  }
+
+  /* A period: two dates joined by a drawn rule, not a dash. */
+  .period {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+  .period > i {
+    display: block;
+    width: var(--space-sm);
+    height: 1px;
+    background: currentColor;
+    opacity: 0.5;
+  }
+
+  .skip {
+    position: fixed;
+    left: var(--space-md);
+    top: calc(-1 * var(--space-3xl));
+    z-index: var(--z-toast);
+    padding: var(--space-xs) var(--space-md);
+    border-radius: var(--radius-pill);
+    background: var(--color-ink);
+    color: var(--color-paper);
+  }
+  .skip:focus-visible {
+    top: var(--space-md);
+  }
+
+  /* The translucent bar. */
+  .glass {
+    background: color-mix(in oklab, var(--color-paper) 78%, transparent);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+  }
+
+  /* The bar: paper glass by default, night glass while it sits over the dark chapter. */
+  .bar {
+    border-color: transparent;
+    color: var(--color-ink);
+    transition:
+      background-color var(--dur-long) var(--ease-out),
+      border-color var(--dur-short) var(--ease-out),
+      color var(--dur-long) var(--ease-out);
+  }
+  .bar[data-scrolled] {
+    border-color: var(--color-rule);
+  }
+  .bar__link {
+    color: var(--color-muted);
+    transition: color var(--dur-short) var(--ease-out);
+  }
+  .bar__link:hover,
+  .bar__link[aria-current] {
+    color: var(--color-ink);
+  }
+  .bar__cta {
+    transition:
+      background-color var(--dur-short) var(--ease-out),
+      opacity var(--dur-short) var(--ease-out),
+      transform var(--dur-short) var(--ease-out),
+      visibility 0s linear var(--dur-short);
+  }
+  .js .bar:not([data-cta]) .bar__cta {
+    opacity: 0;
+    transform: translateY(-4px);
+    visibility: hidden;
+  }
+  .bar[data-cta] .bar__cta {
+    transition-delay: 0s;
+  }
+  .bar__links {
+    transition: transform var(--dur-long) var(--ease-out);
+  }
+  .js .bar:not([data-cta]) .bar__links {
+    transform: translateX(var(--cta-slot, 0px));
+  }
+  .bar[data-tone="night"] {
+    background: color-mix(in oklab, var(--color-night) 72%, transparent);
+    border-color: var(--color-night-rule);
+    color: var(--color-night-ink);
+  }
+  .bar[data-tone="night"] .bar__link {
+    color: var(--color-night-muted);
+  }
+  .bar[data-tone="night"] .bar__link:is(:hover, [aria-current]) {
+    color: var(--color-night-ink);
+  }
+  .bar[data-tone="night"] {
+    --btn-fill: var(--color-night-ink);
+    --btn-fill-hover: color-mix(in oklab, var(--color-night-ink) 84%, var(--color-night));
+    --btn-ink: var(--color-night);
+  }
+  .bar[data-tone="night"] :focus-visible {
+    outline-color: var(--color-night-focus);
+  }
+
+  /* The dark chapter swaps the ink and paper it is drawn with. */
+  .night {
+    background: var(--color-night);
+    color: var(--color-night-ink);
+  }
+  .night :focus-visible,
+  .night .btn:focus-visible {
+    outline-color: var(--color-night-focus);
+  }
+  .night ::selection {
+    background: color-mix(in oklab, var(--color-night-ink) 24%, transparent);
+    color: var(--color-night-ink);
+  }
+
+  .diff-scroll {
+    mask-image: linear-gradient(to right, var(--color-night-ink) calc(100% - var(--space-xl)), transparent);
+  }
+  .diff-scroll:is(:hover, :focus-visible) {
+    mask-image: none;
+  }
+
+  details > summary {
+    list-style: none;
+    cursor: pointer;
+  }
+  details > summary::-webkit-details-marker {
+    display: none;
+  }
+}
+
+/* My portrait, shown whole: the frame takes the image's own proportions (set inline),
+   so nothing is cropped. A hairline ring keeps its edge crisp on the paper. */
+.portrait-frame {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: var(--radius-card);
+  background: var(--color-paper-2);
+  box-shadow: var(--shadow-pop);
+}
+.portrait-frame img {
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  object-fit: cover;
+}
+.portrait-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--color-ink) 8%, transparent);
+  pointer-events: none;
+}
+
+/* Experience rows: a plus that turns to a cross, and the detail settling in beneath. */
+.xp__toggle {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-pill);
+  background: var(--color-paper-2);
+  transition:
+    background-color var(--dur-short) var(--ease-out),
+    transform var(--dur-long) var(--ease-out);
+}
+.xp__toggle > i {
+  grid-area: 1 / 1;
+  width: 12px;
+  height: 1.5px;
+  border-radius: 1px;
+  background: currentColor;
+}
+.xp__toggle > i + i {
+  transform: rotate(90deg);
+}
+.xp > summary:hover .xp__toggle {
+  background: var(--color-paper-3);
+}
+.xp[open] .xp__toggle {
+  transform: rotate(45deg);
+}
+.xp > summary:focus-visible {
+  outline-offset: 6px;
+  border-radius: var(--radius-inner);
+}
+.xp[open] .xp__panel {
+  animation: settle var(--dur-long) var(--ease-out) both;
+}
+@keyframes settle {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+/* The command menu: a soft scrim and a sheet that settles in from just above. */
+.palette-scrim {
+  background: color-mix(in oklab, var(--color-ink) 16%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: fade var(--dur-short) var(--ease-out) both;
+}
+.palette {
+  box-shadow: var(--shadow-pop);
+  animation: settle var(--dur-long) var(--ease-out) both;
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+/* The city stack: pixel panoramas piled like prints. Without script they sit in a column;
+   with it they stack, the front card follows a drag (--dx, --dr) and, thrown or sent on,
+   flies out to the side (--fly) and tucks in at the back. */
+.stack {
+  display: grid;
+  gap: var(--gap-columns);
+}
+.stack__card {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  aspect-ratio: 1200 / 411;
+  border-radius: var(--radius-card);
+  background: var(--color-paper-2);
+  box-shadow: var(--shadow-pop);
+}
+.stack__card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--focus, 50%) 50%;
+  image-rendering: pixelated;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+.stack__caption {
+  position: absolute;
+  left: var(--space-md);
+  bottom: var(--space-md);
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-inner);
+}
+.js .stack {
+  position: relative;
+  display: block;
+  aspect-ratio: 1200 / 411;
+  margin-top: 7.5%;
+}
+.js .stack__card {
+  position: absolute;
+  inset: 0;
+  transform-origin: 50% 100%;
+  touch-action: pan-y;
+  transition:
+    transform var(--dur-reveal) var(--ease-out),
+    opacity var(--dur-long) var(--ease-out);
+}
+.js .stack__card[data-p="0"] {
+  z-index: 3;
+  cursor: grab;
+  transform: translate3d(var(--dx, 0px), 0, 0) rotate(var(--dr, 0deg));
+}
+.js .stack__card[data-p="0"][data-dragging] {
+  cursor: grabbing;
+  transition: none;
+}
+.js .stack__card[data-p="1"] {
+  z-index: 2;
+  transform: translate3d(2.5%, -6%, 0) rotate(2deg) scale(0.95);
+}
+.js .stack__card[data-p="2"] {
+  z-index: 1;
+  opacity: 0.85;
+  transform: translate3d(-2.5%, -11%, 0) rotate(-2deg) scale(0.9);
+}
+.js .stack__card:not([data-p="0"]) .stack__caption {
+  opacity: 0;
+}
+.js .stack__card.is-out {
+  animation: stack-out 720ms var(--ease-out) both;
+}
+.js .stack__card.is-in {
+  animation: stack-in 720ms var(--ease-out) both;
+}
+@keyframes stack-out {
+  0% {
+    z-index: 4;
+    transform: translate3d(0, 0, 0);
+  }
+  45% {
+    z-index: 4;
+    transform: translate3d(calc(var(--fly) * 78%), 3%, 0) rotate(calc(var(--fly) * 8deg));
+  }
+  50%,
+  100% {
+    z-index: 0;
+  }
+}
+@keyframes stack-in {
+  0% {
+    z-index: 4;
+    opacity: 0;
+    transform: translate3d(calc(var(--fly) * 78%), 3%, 0) rotate(calc(var(--fly) * 8deg));
+  }
+  100% {
+    z-index: 4;
+    opacity: 1;
+  }
+}
+html:not(.js) .stack__controls {
+  display: none;
+}
+@media (width < 40rem) {
+  .stack__card,
+  .js .stack {
+    aspect-ratio: 4 / 3;
+  }
+  .js .stack {
+    margin-top: 17%;
+  }
+  .stack__caption {
+    left: var(--space-sm);
+    bottom: var(--space-sm);
+  }
+}
+.stack__tab {
+  min-height: 44px;
+  background: transparent;
+  color: var(--color-muted);
+}
+.stack__tab:hover {
+  background: var(--color-paper-2);
+  color: var(--color-ink);
+}
+.stack__tab[aria-pressed="true"] {
+  background: var(--color-paper-2);
+  color: var(--color-ink);
+}
+.stack__arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--color-paper-2);
+  color: var(--color-ink);
+  cursor: pointer;
+  transition:
+    background-color var(--dur-short) var(--ease-out),
+    transform var(--dur-micro) var(--ease-out);
+}
+.stack__arrow:hover {
+  background: var(--color-paper-3);
+}
+.stack__arrow:active {
+  transform: scale(0.94);
+}
+.stack__arrow:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* The hero settles in once, from visible-by-default CSS (no script needed). */
+.rise {
+  animation: rise var(--dur-reveal) var(--ease-out) both;
+  animation-delay: calc(var(--i, 0) * 90ms);
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+
+/* The page's one reveal: content shows without script and under reduced motion. */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity var(--dur-reveal) var(--ease-out),
+    transform var(--dur-reveal) var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 70ms);
+}
+.js [data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* The story, the page's one scroll pattern (a pinned chapter): each line of the
+   statement lights from grey to ink while the section is pinned. Static elsewhere. */
+.story {
+  position: relative;
+}
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) and (min-width: 40rem) {
+    .story {
+      min-height: 210vh;
+      view-timeline: --story block;
+    }
+    .story__pin {
+      position: sticky;
+      top: calc(var(--nav-h) + 12vh);
+    }
+    .story__line {
+      animation: story-line linear both;
+      animation-timeline: --story;
+    }
+    .story__line:nth-child(1) {
+      animation-range: contain 0% contain 24%;
+    }
+    .story__line:nth-child(2) {
+      animation-range: contain 24% contain 50%;
+    }
+    .story__line:nth-child(3) {
+      animation-range: contain 50% contain 76%;
+    }
+    @keyframes story-line {
+      from {
+        opacity: 0.18;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .rise {
+    animation: none;
+  }
+  .xp__toggle {
+    transition: none;
+  }
+  .xp[open] .xp__panel,
+  .palette,
+  .palette-scrim,
+  .js .stack__card.is-out,
+  .js .stack__card.is-in {
+    animation: none;
+  }
+  .js .stack__card {
+    transition: none;
+  }
 }
 
 /* Lenis */
@@ -53,132 +676,9 @@ html.lenis,
 html.lenis body {
   height: auto;
 }
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
 }
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-
-/* Hairline helpers */
-.hairline {
-  border: 1px solid rgb(var(--hairline) / var(--hairline-alpha));
-}
-.hairline-t {
-  border-top: 1px solid rgb(var(--hairline) / var(--hairline-alpha));
-}
-.hairline-b {
-  border-bottom: 1px solid rgb(var(--hairline) / var(--hairline-alpha));
-}
-
-/* Section eyebrow — Geist Mono spec-sheet label */
-.eyebrow {
-  font-family: var(--font-geist-mono), monospace;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: rgb(var(--mute));
-}
-
-/* Blinking terminal cursor — white block */
-.cursor::after {
-  content: "";
-  display: inline-block;
-  width: 0.5em;
-  height: 1.05em;
-  margin-left: 0.12em;
-  background: rgb(var(--ink));
-  vertical-align: -0.15em;
-  animation: blink 1.05s steps(1) infinite;
-}
-
-/* xAI pill buttons — the entire interactive shape system */
-.pill-outline {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  border-radius: 9999px;
-  border: 1px solid rgb(var(--hairline) / 0.25);
-  background: transparent;
-  color: rgb(var(--ink));
-  font-weight: 400;
-  transition: border-color 0.25s ease, background-color 0.25s ease;
-}
-.pill-outline:hover {
-  border-color: rgb(var(--hairline) / 0.5);
-  background: rgb(var(--hairline) / 0.04);
-}
-.pill-filled {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  border-radius: 9999px;
-  border: 1px solid rgb(var(--ink));
-  background: rgb(var(--ink));
-  color: rgb(var(--canvas));
-  font-weight: 400;
-  transition: opacity 0.25s ease;
-}
-.pill-filled:hover {
-  opacity: 0.88;
-}
-
-/* Subtle full-page noise + grid backdrop */
-.backdrop-grid {
-  background-image:
-    linear-gradient(rgb(var(--hairline) / var(--grid-alpha)) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(var(--hairline) / var(--grid-alpha)) 1px, transparent 1px);
-  background-size: 64px 64px;
-  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 40%, transparent 100%);
-  mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 40%, transparent 100%);
-}
-
-.noise {
-  position: fixed;
-  inset: 0;
-  z-index: 60;
-  pointer-events: none;
-  opacity: 0.035;
-  mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-::selection {
-  background: rgb(var(--ink) / 0.18);
-  color: rgb(var(--ink));
-}
-
-/* Focus ring — white, for keyboard nav */
-:focus-visible {
-  outline: 2px solid rgb(var(--ink) / 0.7);
-  outline-offset: 3px;
-  border-radius: 3px;
-}
-
-/* Fine monochrome scrollbar */
-::-webkit-scrollbar {
-  width: 9px;
-  height: 9px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background: rgb(var(--hairline) / 0.14);
-  border-radius: 6px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: rgb(var(--hairline) / 0.3);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
-    scroll-behavior: auto !important;
-  }
+.lenis [data-lenis-prevent] {
+  overscroll-behavior: contain;
 }

@@ -1,0 +1,57 @@
+{
+  "fetchedAt": "2026-10-26",
+  "login": "krishpranav",
+  "followers": 324,
+  "publicRepos": 508,
+  "contributions": {
+    "total": 1501,
+    "start": "2025-10-26",
+    "levels": "001201000000000000111111111111114421111111111111111111114131131111111111111111112111111111111111111111211111114221122111111111111111111112111111221411111112111111111111111111111111111111111111111111111111111121121121111111111111111111111121111112111111212112211111111111111111111111111111111111111112111111111111111121111111111111111111111111110120002100001101000000"
+  },
+  "repos": [
+    {
+      "name": "vesper",
+      "description": "A simple username osint tool built in rust",
+      "stars": 336,
+      "language": "Rust",
+      "url": "https://github.com/krishpranav/vesper"
+    },
+    {
+      "name": "socialosint",
+      "description": "A rust osint tool for getting emails, from a target, published in social networks like Instagram, Linkedin and Twitter for finding the possible credential leaks in PwnDB",
+      "stars": 101,
+      "language": "Rust",
+      "url": "https://github.com/krishpranav/socialosint"
+    },
+    {
+      "name": "nexa",
+      "description": "A production-grade, single codebase cross-platform UI framework with reactive signals, streaming SSR, and GPU rendering.",
+      "stars": 64,
+      "language": "Rust",
+      "url": "https://github.com/krishpranav/nexa"
+    }
+  ],
+  "upstream": [
+    {
+      "repo": "tauri-apps/tauri",
+      "stars": 112207,
+      "number": 15224,
+      "title": "fix(tauri-runtime-wry): stop leaking ObjC retains in with_webview",
+      "additions": 18,
+      "deletions": 12,
+      "mergedAt": "2026-07-09",
+      "url": "https://github.com/tauri-apps/tauri/pull/15224"
+    },
+    {
+      "repo": "microsoft/playwright",
+      "stars": 98556,
+      "number": 41986,
+      "title": "fix(chromium): refuse WebUI navigations that crash the browser",
+      "additions": 76,
+      "deletions": 0,
+      "mergedAt": "2026-08-11",
+      "url": "https://github.com/microsoft/playwright/pull/41986"
+    }
+  ],
+  "rustUiMergedPRs": 4
+}

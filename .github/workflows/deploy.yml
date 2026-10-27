@@ -3,6 +3,9 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [master]
+  # Weekly rebuild so GitHub stars and contribution counts stay current.
+  schedule:
+    - cron: "0 3 * * 1"
   workflow_dispatch:
 
 permissions:
@@ -24,6 +27,10 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
+      # Refreshes lib/github.generated.json; keeps the committed snapshot on any failure.
+      - run: node scripts/fetch-github.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3
         with:

@@ -1,224 +1,80 @@
-## Overview
+# Since 6th grade: design system
 
-xAI is Elon Musk's frontier-AI lab and the website wears that posture with engineered restraint: a near-black canvas `{colors.canvas}` (`#0a0a0a`) edge-to-edge, white outline pills as every interactive element, and a single proprietary geometric sans `Universal Sans` carrying every display headline at weight 400. There is no gradient hero, no atmospheric backdrop, no product screenshot. The brand reads as confidently sparse — a research lab announcing its work rather than a SaaS marketing site.
+The site is one page, told by me in the first person. It opens on who I am, set bold, with "I've been coding since 6th grade." beneath it. It is calm in the way apple.com is: a near-white ground, soft-grey tiles, near-black ink, one family set big and tight, and a lot of air. One chapter, open source, goes dark. Beside it stands my portrait, drawn in a hand-painted anime style, shown whole. Colour lives in the pictures: the portrait and the cities I've been to. The companies I've worked at appear as their own marks, in the same ink as the words around them.
 
-Type is the second decisive voice. `Universal Sans` carries every display at weight 400 (regular) with aggressive negative tracking (`-2.4 px` at 96 px, scaling down through the display ladder). For technical labels, eyebrows, and metric counters, the brand pairs `Geist Mono` (uppercase, 1.4 px positive tracking) — every section eyebrow reads as a code comment more than a marketing label.
+Tokens live in `app/tokens.css` (Tailwind v4 `@theme static`, so every token is also a utility: `bg-paper-2`, `text-muted`, `font-outlier`). Shared rules are in `app/base.css`, and components in `app/globals.css`. The first lines of `globals.css` are the Hallmark stamp, its waivers, and the record of what the redesign reworded or dropped. Content lives in `lib/resume.ts`; no copy about experience is hard-coded in components.
 
-Every interactive element is a pill (`{rounded.pill}` 9999 px) with 1 px white-translucent border `rgba(255, 255, 255, 0.25)`. The button shape never varies — the same translucent-white pill carries "Try Grok", "Read announcement", "Custom Voices", "Sign up now", and every "Read" anchor. The pill is the entire shape system.
+## Content rules
 
-**Key Characteristics:**
-- A single near-black canvas (`{colors.canvas}` `#0a0a0a`) with white outline pills as the entire interactive vocabulary.
-- Universal Sans weight 400 for display, Geist Mono uppercase tracked for labels — the two-face contrast IS the brand voice.
-- Every button is a `{rounded.pill}` outline with translucent-white border. The brand never uses filled CTAs except for one variant (white-filled pill on Sign Up).
-- Cards are tight `{rounded.sm}` 8 px rectangles in a slightly-lighter `{colors.canvas-card}` (`#191919`) fill with hairline border. No shadows.
-- A muted accent palette of sunset-orange / dusk-purple / twilight-violet / breeze-blue lives in the design tokens but appears rarely on the main marketing surface — reserved for product illustrations / icons.
-- Massive negative letter-spacing on display headlines (`-2.4 px` at 96 px) gives the typography a precise, gathered look.
+- Every role, date and number comes from the latest résumé (`public/Krisna_Pranav_Resume.pdf`) or GitHub (`lib/github.generated.json`, refreshed by `scripts/fetch-github.mjs`). The previous résumé's figures stay retired.
+- First person throughout: "I build", "Where I've been", "Say hello". No interview questions as heads, and no product-page taglines.
+- No demo widgets. The work is told in words, official marks and real figures.
+- Marks carry meaning wherever a thing has one, all official and all in the current ink:
+  - **Employers** (Turing, Uber, PayPal, Crossing Hurdles) and **projects I've fixed** (Tauri, Playwright) are masks from `public/logos/`.
+  - **The labs whose teams I work with directly at Turing** (Anthropic, OpenAI, Google, Meta) appear on the Turing tile and inline in the story.
+  - **Tools and languages** on every stack line, **the platforms the notetaker joins** (Zoom, Teams, Meet, phone), **my games** (Counter-Strike's mark and the CS:GO wordmark, Fortnite) and **my trades** (Bitcoin, Dogecoin, a chart) come from `components/primitives/Marks.tsx`.
+  - A tool with no official mark (gRPC, AWS, SSE) is simply written. There are no client logos.
+- No em or en dashes in copy. A date range is two dates joined by a drawn rule (`<Period>`).
+- Accounts: GitHub, LinkedIn and X (@krishpranav5), the ones my GitHub profile links. Each is shown with its own mark (`components/primitives/Social.tsx`).
+- Cities are the ones I've been to: Singapore, where I'm based and work; Bengaluru, where I travel often; and San Francisco. Each is a 1200x411 pixel panorama in one golden-hour palette. San Francisco is my own image (`public/cool-bg.jpg`). Bengaluru (Vidhana Soudha, trumpet trees in bloom, an auto-rickshaw) and Singapore (Marina Bay Sands, the ArtScience Museum, the skyline, the Supertrees) are painted to match it by `scripts/cities.mjs`, at 400x137 and scaled 3x. Its kit draws a warped dithered sky, streaky cirrus, cumulus from sunlit puffs, glass towers, rippled reflections, foliage from leaf clumps and blooms, in colours sampled from the SF image.
+- At Uber I worked in its AI labs, on work used to train frontier AI models (my own account).
+- Off the clock is in my own words: 5,000 hours in CS:GO, 1,250 in Fortnite, professional sim racing, and trading crypto, meme coins and the stock market. Nothing is added to it.
+- No education on the page.
+- Location is Singapore (`Asia/Singapore`, UTC+08:00), my main place and where I work; I travel often to Bengaluru. The local clock is 12-hour ("7:40 pm") and renders nothing until the client knows the time.
 
-## Colors
-
-### Brand & Accent
-- **White** (`{colors.primary}` — `#ffffff`): The brand's primary "color" — used as button outline, button-primary fill, all display text. The brand's signature is white-on-near-black.
-- **Sunset Orange** (`{colors.accent-sunset}` — `#ff7a17`): A warm orange used inside product illustrations and accent moments.
-- **Sunset Soft** (`{colors.accent-sunset-soft}` — `#ffc285`): The lighter variant of the sunset accent.
-- **Dusk Purple** (`{colors.accent-dusk}` — `#7c3aed`): Deep purple used inside product illustrations.
-- **Twilight** (`{colors.accent-twilight}` — `#c4b5fd`): Soft violet — illustrative accent.
-- **Breeze Blue** (`{colors.accent-breeze}` — `#a0c3ec`): Soft blue — illustrative accent.
-- **Midnight** (`{colors.accent-midnight}` — `#0d1726`): Deep blue-black for illustrative backgrounds.
-
-### Surface
-- **Canvas** (`{colors.canvas}` — `#0a0a0a`): The default near-black page background. The brand's only true surface.
-- **Canvas Soft** (`{colors.canvas-soft}` — `#1a1c20`): A slightly lighter dark fill used for hovered nav items and tooltips.
-- **Canvas Card** (`{colors.canvas-card}` — `#191919`): The charcoal card fill used inside product-feature cards.
-- **Canvas Mid** (`{colors.canvas-mid}` — `#363a3f`): A mid-dark used for nested surfaces and code mockup backgrounds.
-- **Hairline** (`{colors.hairline}` — `#212327`): 1 px solid dividers on dark surfaces.
-
-### Text
-- **Ink** (`{colors.ink}` — `#ffffff`): Default text on canvas — pure white.
-- **Ink Hover** (`{colors.ink-hover}` — `#fafaf7`): Slightly off-white used for hover states (filtered out per no-hover policy in component specs).
-- **Body** (`{colors.body}` — `#dadbdf`): Secondary body text — supporting copy in lighter weight.
-- **Body Mid / Mute** (`{colors.body-mid}` — `#7d8187`): Mid-emphasis body and mute text — captions, fine print.
-
-### Semantic
-The brand doesn't surface a separate semantic palette on the marketing site. Validation cues use the white-on-canvas hierarchy.
-
-## Typography
-
-### Font Family
-Two faces ladder the system:
-1. **universalSans** — proprietary geometric sans used for every display, body, button, and link role. Weight 400 only on the marketing surface (the brand's restraint is part of the voice). Negative letter-spacing at display sizes is the visual signature.
-2. **GeistMono** — used for uppercase section eyebrows, label captions, and metric counters. Positive tracking (1.2 – 1.4 px) at 12 – 14 px.
-
-### Hierarchy
-
-| Token | Size | Weight | Line Height | Letter Spacing | Use |
-|---|---|---|---|---|---|
-| `{typography.display-xl}` | 96px | 400 | 96px | -2.4px | Maximum hero scale. |
-| `{typography.display-lg}` | 72px | 400 | 72px | -1.8px | Sub-hero displays. |
-| `{typography.display-md}` | 48px | 400 | 48px | -1.2px | Section headlines. |
-| `{typography.display-sm}` | 32px | 400 | 36px | -0.6px | Card-cluster headings. |
-| `{typography.display-xs}` | 20px | 400 | 28px | 0 | Inline displays. |
-| `{typography.body-lg}` | 18px | 400 | 28px | 0 | Lead paragraphs. |
-| `{typography.body-md}` | 16px | 400 | 24px | 0 | Default body. |
-| `{typography.body-sm}` | 14px | 400 | 20px | 0 | Secondary body. |
-| `{typography.caption-mono}` | 14px | 400 | 20px | 1.4px | Section eyebrow (GeistMono uppercase). |
-| `{typography.caption-mono-sm}` | 12px | 400 | 16px | 1.2px | Small mono labels. |
-| `{typography.button-md}` | 14px | 400 | 20px | 0 | Button label. |
-
-### Principles
-- **Weight 400 for everything.** The brand never bolds. Negative tracking + size hierarchy do the emphasis work.
-- **Tight negative tracking on display sizes.** Reverting to neutral tracking loses the precision feel.
-- **GeistMono uppercase for eyebrows.** Tracked positively (1.4 px) to make the mono read as a code comment.
-
-### Note on Font Substitutes
-universalSans is proprietary. Open-source substitutes:
-- **Display + body** — *Inter* weight 400 with `-0.04em` to `-0.02em` letter-spacing at display sizes comes closest. *Geist* is the second-best option.
-- **Mono** — *Geist Mono* is the documented brand companion; *JetBrains Mono* or *IBM Plex Mono* are alternates.
-
-## Layout
-
-### Spacing System
-- **Base unit**: 4 px.
-- **Tokens**: `{spacing.xxs}` 2 px · `{spacing.xs}` 4 px · `{spacing.sm}` 8 px · `{spacing.md}` 12 px · `{spacing.lg}` 16 px · `{spacing.xl}` 24 px · `{spacing.2xl}` 32 px · `{spacing.3xl}` 48 px · `{spacing.4xl}` 64 px.
-- **Section padding**: hero / content bands at `{spacing.4xl}` 64 px on desktop.
-- **Card interior padding**: `{spacing.xl}` 24 px.
-
-### Grid & Container
-- Marketing content centres at ~1200 px.
-- Product / announcement card grid: 2-up at desktop, 1-up at mobile.
-
-### Responsive Strategy
-
-#### Breakpoints
-
-| Name | Width | Key Changes |
-|---|---|---|
-| Mobile | < 768px | Hero scales 96 → 48 px; grids 1-up; hamburger nav. |
-| Desktop | ≥ 768px | Full hero + 2-up grids. |
-
-#### Touch Targets
-Buttons render ~32 – 40 px tall (8 vertical padding + 20 line). Mobile inflates touch area to meet WCAG 44 × 44 px.
-
-#### Image Behavior
-The brand uses sparse SVG illustrations for product moments (Grok, Voice, API). No photography on the marketing surface.
-
-## Elevation & Depth
-
-| Level | Treatment | Use |
-|---|---|---|
-| Level 0 — Flat | No shadow, no border. | Default. |
-| Level 1 — Hairline | 1 px solid `{colors.hairline}` border. | Card chrome, button outlines (with translucent white). |
-
-The brand uses no shadows. Hairline borders carry all elevation cues.
-
-## Shapes
-
-### Border Radius Scale
+## Colour (OKLCH)
 
 | Token | Value | Use |
 |---|---|---|
-| `{rounded.none}` | 0px | Full-bleed bands. |
-| `{rounded.sm}` | 8px | Card chrome (the brand's `--radius` value). |
-| `{rounded.pill}` | 9999px | Every button — the brand's universal interactive shape. |
-| `{rounded.full}` | 9999px | Circular icon containers. |
+| `paper` | `oklch(99.3% 0.002 270)` | page ground |
+| `paper-2` | 96.7% | tiles (work, how I work), quiet pills |
+| `paper-3` | 93.2% | pill hover, hairlines inside tiles |
+| `ink` | `oklch(21% 0.006 270)` | heads, body, the filled pill |
+| `ink-2` | 38% | running text inside tiles |
+| `muted` | 53% | leads, captions, meta |
+| `rule` | 89% | hairlines between rows |
+| `accent`, `accent-ink` | ink, paper | the accent is the ink; the page is monochrome on purpose |
+| `focus` | `oklch(53% 0.19 258)` | focus rings, 2px, instant |
+| `night`, `night-2`, `night-3` | 15.5%, 21%, 26% | the dark chapter, its cards, its logo wells |
+| `night-ink`, `night-muted`, `night-rule`, `night-focus` | 97%, 72%, 31%, a light blue | type, rules and focus on night |
+
+Light, with one dark chapter. The bar turns night while it sits over it.
+
+## Type
+
+- **Onest** (variable, 400/500/600) for everything, through `--font-display` and `--font-body`. Heads are 600, tight-tracked, one weight and one colour.
+- **Geist Mono** (`--font-outlier`) only for code in the diffs.
+- Roles: `.t-hero` (to 96px), `.t-section` (to 72px), `.t-statement` (to 52px, the story), `.t-figure` (to 88px, proportional figures), `.t-title` (to 32px), `.t-lead` (to 26px). Body is 17px.
+- Labels and captions are the body face, a step smaller, sentence case, never tracked capitals.
+
+## Grid and space
+
+The container is 1200px, centred, with a 40/24/20px gutter. The grid is 12 columns from 60rem and 4 below, with a 24px column gap (16px on phones). Section gaps are 160/112/80px (`--section-gap`), with `-s` and `-l` steps. Sections land flush under the 52px bar when jumped to (`lib/lenis.ts`).
+
+## Surfaces
+
+- **Tile:** `paper-2`, 28px radius (`--radius-card`), no shadow, no border. It holds the work bento and "How I like to work".
+- **Inner:** 14px radius (`--radius-inner`), for logo wells, diffs, and palette rows.
+- **Pill:** 999px. There is one filled recipe, `.btn--primary` (ink), recoloured through `--btn-fill` in the night bar; every other button is the quiet grey pill.
+- **Glass:** the bar uses paper at 78% with blur 20px, or night at 72% over the dark chapter.
+- **Portrait:** 28px radius, a 1px ink hairline at 8%, no drop shadow.
 
 ## Components
 
-### Buttons
+- **Portrait** (`Portrait`): my illustrated portrait (`public/me/illustrated.jpeg`, 1792x2400), shown whole and still. The frame takes the image's exact proportions, so nothing is cropped, with the card radius, a 1px hairline and the pop shadow. It is served as AVIF, then WebP, then JPEG at 600, 900 and 1200 wide. In the hero it pairs with the text, centred with a 96px gap, at up to 440px wide.
+- **Social marks:** 44px round targets, muted ink that turns to ink on a paper-2 wash. They sit in the hero's action row, the mobile menu, and the contact links with their handles.
+- **Logo:** an SVG or PNG used as a CSS mask in `currentColor`, at an optical height per mark. With `inline`, it stands in for the company name inside a sentence, sized in em and dropped to sit on the baseline (`INLINE` in `Logo.tsx`).
+- **Story:** five lines in `.t-statement`, pinned on desktop while each lights from 18% to full ink (CSS scroll timeline). It is static and fully lit elsewhere.
+- **Work bento:** spans of 12, 7+5 and 5+7. Each tile has a mark or a name, an optional real figure, a first-person h3, two sentences, and a footer with the title, dates and stack.
+- **Experience:** native `<details>` rows on one 12-column grid. A company with an official mark shows the mark, inline and middle-aligned on the row's first line (Crossing Hurdles' badge with its name beside it). A plus turns to a cross, and the detail settles in. The list ends on "6th grade".
+- **Off the clock:** a games tile (Counter-Strike's mark and the CS:GO wordmark, 5,000 as the figure, Fortnite beneath a hairline) beside the racing and trading lines, set large with their marks inline.
+- **Cities stack:** pixel panoramas piled like prints, the next card peeking above at 2deg. The front card follows a drag and, thrown past 90px or sent on by the arrows, flies out to the side and tucks in at the back; city names jump straight to one. Under 40rem the frame turns 4:3 and holds each city's landmark (`focus`). Without script the cards sit in a column; under reduced motion they swap without flying.
+- **Command menu:** ⌘K, or the footer's "Press ⌘K" button (`kp:palette` event).
 
-**`button-primary`** — the rare white-filled pill (used on a single Sign Up CTA).
-- Background `{colors.primary}` white, text `{colors.on-primary}` near-black, 1 px solid white border, label `{typography.button-md}`, padding `{spacing.xs} {spacing.md}`, shape `{rounded.pill}` 9999 px.
+## Motion
 
-**`button-outline-on-dark`** — the canonical white-outline pill, used for every non-primary CTA.
-- Background `{colors.canvas}` (transparent in practice — `rgba(0,0,0,0)`), text `{colors.ink}` white, 1 px solid `{colors.hairline}` border (translucent white at runtime), same typography / padding scale / shape.
+The hero settles in once (`.rise`, staggered). Sections reveal once with a 24px rise; content is visible without script and under reduced motion. The story is the page's one scroll pattern. Lenis smooths the wheel and is off under reduced motion. Only `transform` and `opacity` animate.
 
-**`button-outline-sm`** — the smaller outline pill used in card-cluster CTAs.
-- Same as `button-outline-on-dark` with tighter padding `{spacing.xs} {spacing.md}`.
+## Verification
 
-### Cards & Containers
-
-**`card-content`** — the default content card.
-- Background `{colors.canvas-card}` (`#191919`), text `{colors.ink}`, 1 px solid `{colors.hairline}` border, padding `{spacing.xl}`, shape `{rounded.sm}` 8 px.
-
-**`card-feature-product`** — the product-feature card (Grok / Voice / API).
-- Same chrome as `card-content`. Hosts an SVG illustration + headline + body + outline pill CTA.
-
-### Inputs & Forms
-
-**`text-input`** — the standard text input on dark.
-- Background `{colors.canvas-soft}`, text `{colors.ink}`, 1 px solid `{colors.hairline}`, body in `{typography.body-md}`, padding `{spacing.md} {spacing.lg}`, shape `{rounded.sm}` 8 px.
-
-### Navigation
-
-**`nav-bar`** — the sticky top nav.
-- Background `{colors.canvas}`, text `{colors.ink}`, padding `{spacing.md} {spacing.xl}`.
-
-**`nav-link`** — link items inside nav.
-- Text `{colors.ink}`, set in `{typography.body-sm}`.
-
-**`footer`** — the footer band.
-- Background `{colors.canvas}`, text `{colors.body}`, padding `{spacing.3xl} {spacing.xl}`. Body in `{typography.body-sm}`.
-
-### Signature Components
-
-**`hero-band`** — the dark hero with massive display headline.
-- Background `{colors.canvas}`, text `{colors.ink}`, padding `{spacing.4xl} {spacing.xl}`. Headline in `{typography.display-xl}` (96 px weight 400 with `-2.4 px` tracking).
-
-**`content-band`** — the standard content section.
-- Background `{colors.canvas}`, text `{colors.ink}`, padding `{spacing.4xl} {spacing.xl}`. Section headline in `{typography.display-md}` preceded by a `{typography.caption-mono}` UPPERCASE GeistMono eyebrow.
-
-**`eyebrow-mono`** — the uppercase tracked GeistMono label above every section headline.
-- Text `{colors.ink}`, set in `{typography.caption-mono}`. The brand's signature label style.
-
-**`divider-hairline`** — the 1 px line between section bands.
-- 1 px solid `{colors.hairline}`.
-
-### Examples (illustrative)
-
-> Auto-derived kit-mirror demonstration surfaces (`scripts/derive-examples-block.mjs`). Each `ex-*` entry references brand-native primitives so downstream consumers (`/preview-design`, `/generate-kit`) re-skin the same 10 surfaces consistently. `TO_FILL` markers indicate missing primitives — resolve in the LLM judgment pass.
-
-**`ex-pricing-tier`** — Default Pricing tier card. Re-uses feature-card chrome with brand canvas-soft surface.
-- Properties: `backgroundColor`, `textColor`, `borderColor`, `rounded`, `padding`
-
-**`ex-pricing-tier-featured`** — Featured/highlighted tier — polarity-flipped surface (dark fill + light text in light mode, light fill + dark text in dark mode).
-- Properties: `backgroundColor`, `textColor`, `rounded`, `padding`
-
-**`ex-product-selector`** — What's Included summary card — re-purposed for SaaS / B2B verticals (NOT a literal product gallery).
-- Properties: `backgroundColor`, `rounded`, `padding`
-
-**`ex-cart-drawer`** — Subscription summary — re-purposed for SaaS / B2B (line items per add-on, not literal cart).
-- Properties: `backgroundColor`, `rounded`, `padding`, `item-divider`
-
-**`ex-app-shell-row`** — Sidebar nav row inside the App Shell example. Active state uses brand primary as the indicator.
-- Properties: `backgroundColor`, `activeIndicator`, `rounded`, `padding`
-
-**`ex-data-table-cell`** — Default data-table th + td chrome. Header uses mono-caps eyebrow typography; body uses body-sm.
-- Properties: `headerBackground`, `headerTypography`, `bodyTypography`, `cellPadding`, `rowBorder`
-
-**`ex-auth-form-card`** — Sign-in / sign-up card. Re-uses feature-card chrome with text-input primitives inside.
-- Properties: `backgroundColor`, `rounded`, `padding`
-
-**`ex-modal-card`** — Modal dialog surface — same chrome as feature-card with elevated shadow.
-- Properties: `backgroundColor`, `rounded`, `padding`
-
-**`ex-empty-state-card`** — Empty-state illustration frame.
-- Properties: `backgroundColor`, `rounded`, `padding`, `captionTypography`
-
-**`ex-toast`** — Toast notification surface — feature-card shape + medium shadow.
-- Properties: `backgroundColor`, `rounded`, `padding`, `typography`
-
-
-## Do's and Don'ts
-
-### Do
-- Reserve `{colors.canvas}` (`#0a0a0a`) as the only page surface. The brand is dark-canvas only.
-- Set hero headlines in `{typography.display-xl}` Universal Sans weight 400 with `-2.4 px` tracking. The precision IS the voice.
-- Use `{rounded.pill}` 9999 px on every interactive element. The pill is the brand.
-- Pair Universal Sans (sentence-case) with GeistMono UPPERCASE (eyebrows, labels, metric counters).
-- Use white-translucent borders for outline buttons — the brand never uses solid white borders on its outline pill.
-
-### Don't
-- Don't introduce a light-mode counterpart. xAI is dark-canvas only.
-- Don't bold display headlines. Weight 400 is the entire scale.
-- Don't use filled buttons broadly. The brand uses outline pills almost exclusively; one Sign Up white-filled pill is the rare exception.
-- Don't drop a drop-shadow on cards. Hairline borders carry elevation.
-- Don't substitute Universal Sans with a generic geometric sans without adjusting letter-spacing. The negative tracking is part of the brand.
+`npx tsc --noEmit`, then `npx next build` (static export). For the Hallmark lint, run `node ~/.claude/skills/hallmark/scripts/sloplint.mjs <files> --render --kept --url http://localhost:3123/` with the dev server up. The share image and icons come from `node scripts/og.mjs` after a build.

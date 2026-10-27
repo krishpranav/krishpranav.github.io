@@ -1,74 +1,61 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Geist_Mono } from "next/font/google";
+import { Geist_Mono, Onest } from "next/font/google";
+import { identity } from "@/lib/resume";
 import "./globals.css";
 
-// Universal Sans is proprietary; Inter weight 400 is the documented substitute.
-const sans = Inter({
+const onest = Onest({
   subsets: ["latin"],
-  variable: "--font-sans",
+  weight: ["400", "500", "600"],
+  variable: "--font-onest",
   display: "swap",
 });
 
-const geistMono = Geist_Mono({
+const mono = Geist_Mono({
   subsets: ["latin"],
+  weight: ["400"],
   variable: "--font-geist-mono",
   display: "swap",
 });
 
+const title = `${identity.name}, Senior AI/ML Engineer in Singapore`;
+const description =
+  "I’m Krisna, a senior AI/ML engineer at Turing, building agent infrastructure from Singapore. I’ve been coding since 6th grade.";
+
 export const metadata: Metadata = {
-  title: "Krisna Pranav | AI/ML Systems & Founding Engineer",
-  description:
-    "AI/ML Systems Engineer focused on agentic AI, low-latency LLM infrastructure, and deep learning systems.",
-  metadataBase: new URL("https://krishpranav.github.io"),
+  metadataBase: new URL(identity.links.site),
+  title,
+  description,
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "Krisna Pranav | AI/ML Systems & Founding Engineer",
-    description:
-      "AI/ML Systems Engineer focused on agentic AI, low-latency LLM infrastructure, and deep learning systems.",
-    url: "https://krishpranav.github.io",
-    siteName: "Krisna Pranav Portfolio",
-    images: [
-      {
-        url: "https://wikimedia.org",
-        width: 800,
-        height: 800,
-        alt: "Krisna Pranav Elangovan Portrait",
-      },
-    ],
+    title,
+    description,
+    url: identity.links.site,
+    siteName: identity.name,
     locale: "en_US",
     type: "profile",
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Krisna Pranav | AI/ML Systems & Founding Engineer",
-    description:
-      "AI/ML Systems Engineer focused on agentic AI, low-latency LLM infrastructure, and deep learning systems.",
-  },
+  twitter: { card: "summary_large_image", title, description },
 };
 
+// The paper token (oklch 99.3% 0.002 270) as hex, for the browser chrome.
 export const viewport: Viewport = {
-  themeColor: "#0a0a0a",
+  themeColor: "#fcfcfd",
   width: "device-width",
   initialScale: 1,
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" data-theme="dark" suppressHydrationWarning>
+    <html lang="en" className={`${onest.variable} ${mono.variable}`} suppressHydrationWarning>
       <head>
-        {/* Set theme before paint to avoid a flash. */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `try{var t=localStorage.getItem('theme');if(t){document.documentElement.setAttribute('data-theme',t);}}catch(e){}`,
-          }}
-        />
+        {/* Before paint: CSS hides reveal targets only when a script will show them. */}
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
       </head>
-      <body className={`${sans.variable} ${geistMono.variable} font-sans antialiased`}>
+      <body>
+        <a href="#main" className="skip">
+          Skip to content
+        </a>
         {children}
-        <div className="noise" aria-hidden />
       </body>
     </html>
   );

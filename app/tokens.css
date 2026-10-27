@@ -1,0 +1,93 @@
+@theme static {
+  /* Type: one family, Apple-scale steps far apart. */
+  --text-xs: 0.8125rem;
+  --text-sm: 0.875rem;
+  --text-md: 1.0625rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 1.953rem;
+  --text-3xl: 2.441rem;
+  --text-hero: clamp(3rem, 2rem + 4.6vw, 6rem);
+  --text-intro: clamp(2.5rem, 1.6rem + 2.8vw, 4.25rem);
+  --text-section: clamp(2.5rem, 1.6rem + 3.2vw, 4.5rem);
+  --text-statement: clamp(1.875rem, 1.2rem + 2.9vw, 4rem);
+  --text-figure: clamp(3rem, 2rem + 4vw, 5.5rem);
+  --text-line: clamp(1.75rem, 1.3rem + 1.4vw, 2.5rem);
+  --text-title: clamp(1.5rem, 1.2rem + 0.9vw, 2rem);
+  --text-lead: clamp(1.25rem, 1.05rem + 0.6vw, 1.625rem);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --color-error: oklch(52% 0.19 27);
+  --color-success: oklch(50% 0.12 150);
+
+  /* Light: near-white ground, soft-grey tiles, near-black ink. Monochrome on purpose:
+     the only colour on the page is my portrait. */
+  --color-paper: oklch(99.3% 0.002 270);
+  --color-paper-2: oklch(96.7% 0.003 270);
+  --color-paper-3: oklch(93.2% 0.004 270);
+  --color-ink: oklch(21% 0.006 270);
+  --color-ink-2: oklch(38% 0.008 270);
+  --color-muted: oklch(53% 0.01 270);
+  --color-rule: oklch(89% 0.004 270);
+  --color-accent: oklch(21% 0.006 270);
+  --color-accent-ink: oklch(99.3% 0.002 270);
+  --color-focus: oklch(53% 0.19 258);
+
+  /* The one dark chapter (open source). */
+  --color-night: oklch(15.5% 0.004 270);
+  --color-night-2: oklch(21% 0.005 270);
+  --color-night-3: oklch(26% 0.006 270);
+  --color-night-ink: oklch(97% 0.002 270);
+  --color-night-muted: oklch(72% 0.008 270);
+  --color-night-rule: oklch(31% 0.006 270);
+  --color-night-focus: oklch(72% 0.15 250);
+
+  --font-display: var(--font-onest), "Onest", ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-onest), "Onest", ui-sans-serif, system-ui, sans-serif;
+  --font-outlier: var(--font-geist-mono), "Geist Mono", ui-monospace, monospace;
+
+  --radius-card: 28px;
+  --radius-inner: 14px;
+  --radius-pill: 999px;
+  --shadow-card: none;
+  --shadow-pop: 0 1px 2px oklch(21% 0.006 270 / 0.08), 0 32px 64px -16px oklch(21% 0.006 270 / 0.28);
+  --tracking-display: -0.035em;
+  --tracking-section: -0.03em;
+  --tracking-statement: -0.022em;
+}
+:root {
+  color-scheme: light;
+  --space-3xs: 2px;
+  --space-2xs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 40px;
+  --space-2xl: 64px;
+  --space-3xl: 96px;
+  --space-4xl: 144px;
+  --dur-micro: 120ms;
+  --dur-short: 220ms;
+  --dur-long: 420ms;
+  --dur-reveal: 900ms;
+  --container: 1200px;
+  --gutter: 40px;
+  --gap-columns: 24px;
+  --nav-h: 52px;
+  --section-gap-s: 120px;
+  --section-gap: 160px;
+  --section-gap-l: 200px;
+  --z-base: 1;
+  --z-raised: 10;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-sticky-nav: 300;
+  --z-modal: 400;
+  --z-toast: 500;
+  --z-tooltip: 600;
+  --rule-hair: 1px;
+}
+@media (max-width: 60rem) { :root { --gutter: 24px; --section-gap-s: 88px; --section-gap: 112px; --section-gap-l: 128px; } }
+@media (max-width: 40rem) { :root { --gutter: 20px; --section-gap-s: 64px; --section-gap: 80px; --section-gap-l: 96px; --gap-columns: 16px; } }
