@@ -2,7 +2,7 @@
 // structured data, the sitemap and llms.txt never drift from what the page says.
 // Facts only: nothing here that the page, the résumé or GitHub does not state.
 
-import { capabilities, cities, github, hobbies, identity, labs, languages, principles, repoNotes, roles, upstreamFixes, work } from "@/lib/resume";
+import { capabilities, cities, github, hobbies, identity, labs, languages, origin, principles, repoNotes, roles, upstreamFixes, work } from "@/lib/resume";
 
 // The root URL in the one form Next.js renders for the canonical (no trailing slash),
 // used by the canonical, og:url, the sitemap and the structured data alike.
@@ -172,6 +172,8 @@ Résumé: ${abs(identity.links.resume)}
 I'm ${identity.name} (krishpranav), a software engineer with 8+ years of production systems and 4+ years in AI/ML. At Turing I build agent infrastructure: agentic workflows and LLM orchestration on Anthropic models, with durable state, so long-running agents resume after a failure instead of starting over. There I work directly with teams at ${labs.slice(0, -1).join(", ")} and ${labs.at(-1)}. Before Turing I was forward deployed at Crossing Hurdles, the first engineer at a VC-backed AI startup, worked in Uber's AI labs on work used to train frontier AI models, and moved PayPal services handling 15 to 20 million requests a day from C++ to Go with no downtime.
 
 I'm based in Singapore, where I work, and I travel often to Bengaluru, India. I've also been to San Francisco.
+
+${origin.lead} ${say(origin.body)}
 
 ## Selected work
 

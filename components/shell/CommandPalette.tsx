@@ -18,10 +18,11 @@ export default function CommandPalette({ open: isOpen, onClose }: { open: boolea
 
   const commands = useMemo<Command[]>(
     () => [
+      { id: "start", label: "How it started", hint: "White-hat hacking, Scratch", run: () => scrollToTarget("#start") },
       { id: "work", label: "Things I’ve built", hint: "Work", run: () => scrollToTarget("#work") },
       { id: "oss", label: "My fixes upstream", hint: "Open source", run: () => scrollToTarget("#open-source") },
       { id: "path", label: "Every role since 2017", hint: "Experience", run: () => scrollToTarget("#path") },
-      { id: "principles", label: "How I work", hint: "Principles", run: () => scrollToTarget("#principles") },
+      { id: "principles", label: "What I specialise in", hint: "Production AI systems", run: () => scrollToTarget("#principles") },
       { id: "life", label: "Off the clock", hint: "Games, racing, trading", run: () => scrollToTarget("#life") },
       { id: "cities", label: "Cities I’ve been to", hint: "Singapore, San Francisco", run: () => scrollToTarget("#cities") },
       { id: "contact", label: "Say hello", hint: "Contact", run: () => scrollToTarget("#contact") },

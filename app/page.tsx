@@ -4,6 +4,7 @@ import Cities from "@/components/sections/Cities";
 import Hero from "@/components/sections/Hero";
 import Hobbies from "@/components/sections/Hobbies";
 import OpenSource from "@/components/sections/OpenSource";
+import Origin from "@/components/sections/Origin";
 import Path from "@/components/sections/Path";
 import Principles from "@/components/sections/Principles";
 import Story from "@/components/sections/Story";
@@ -21,6 +22,7 @@ export default function Home() {
       <main id="main" className="relative">
         <Hero />
         <Story />
+        <Origin />
         <Work />
         <OpenSource />
         <Path />

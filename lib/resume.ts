@@ -16,7 +16,7 @@ export const identity = {
   locationShort: "Singapore",
   timeZone: "Asia/Singapore",
   utc: "UTC+08:00",
-  headline: "I’m Krisna Pranav, a senior AI/ML engineer at Turing, based in Singapore.",
+  headline: "I’m Krisna Pranav, a senior AI/ML engineer at Turing. 👋",
   statement: "I’ve been coding since 6th grade.",
   links: {
     email: "krisna.pranav@gmail.com",
@@ -315,7 +315,7 @@ export const cities = [
 // Off the clock, in the owner's own words (2026-10-27). The hours are theirs.
 export const hobbies = {
   games: [
-    { name: "CS:GO", hours: 5000 },
+    { name: "CS:GO", hours: 6250 },
     { name: "Fortnite", hours: 1250 },
   ],
   // Each line in parts, so the words that have a mark can carry it.
@@ -444,10 +444,18 @@ export const upstreamFixes: UpstreamFix[] = [
 ];
 
 export const principles = {
-  statement: "Tests, evals and tracing are part of the feature.",
+  statement: "I specialise in production AI systems.",
+  // The depth behind the claim, then the engineering reality (tests, evals and tracing
+  // live here now; they were the old head). Both lines are also read by llms-full.txt.
   essay: [
-    "A three-line LLM script can look great in a 30-second demo. The engineering starts when it meets real traffic: rate limits, slow tools, outputs that change between runs, thousands of concurrent users.",
-    "I build for that part, and I write code other engineers can build on.",
+    "Eight years shipping production systems, four of them in AI/ML. I build the infrastructure under agents, the orchestration, the evals and the tracing, not a thin script on top.",
+    "A three-line LLM demo looks great for thirty seconds. The engineering starts when it meets real traffic: rate limits, slow tools, outputs that change between runs, thousands of concurrent users. I build for that part, and I write code other engineers can build on.",
+  ],
+  // Where I'm strongest, stated plainly.
+  depth: [
+    "Agentic AI and LLM orchestration, on frontier models, with durable state.",
+    "Distributed systems that stay fast under concurrency, and migrations that don’t go down.",
+    "Evals and tracing on every call, so a bad output points to one prompt and step.",
   ],
   tenets: [
     {
@@ -462,6 +470,26 @@ export const principles = {
       title: "Design for the next engineer",
       body: "Adapters and data contracts, so new work plugs in without touching the core.",
     },
+  ],
+};
+
+// How it started, in my own words (the owner, 2026-10-28): I began as a white-hat
+// (ethical) hacker, and the first language I learned was Scratch. Only facts I can stand
+// behind: these two, the 6th-grade brand line, and the arc the résumé records. The
+// TryHackMe profile is the source for the white-hat start but is deliberately not linked.
+// `body` is parts, so "Scratch" carries its own mark and links to scratch.mit.edu.
+export const origin = {
+  heading: "It started in 6th grade.",
+  lead: "I started out as an ethical hacker, a white hat.",
+  body: [
+    "The first language I ever learned was ",
+    { mark: "scratch", text: "Scratch", href: "https://scratch.mit.edu/" },
+    ", blocks snapped together on screen. It grew into trading platforms, mobile apps and a desktop agent in Rust, one project at a time, years before any of it became a job.",
+  ],
+  milestones: [
+    { when: "6th grade", what: "White-hat hacking, and my first language, Scratch." },
+    { when: "2017", what: "My first professional contracts." },
+    { when: "Now", what: "Agent infrastructure at Turing." },
   ],
 };
 
