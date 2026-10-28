@@ -102,7 +102,13 @@ export default function Cities() {
           </div>
 
           <div className="stack__controls mt-8 flex flex-wrap items-center justify-between gap-6">
-            <div role="group" aria-label="Choose a city" className="flex flex-wrap gap-2">
+            {/* A segmented control on phones, its thumb set by --front (globals.css). */}
+            <div
+              role="group"
+              aria-label="Choose a city"
+              className="stack__tabs flex flex-wrap gap-2"
+              style={{ "--n": N, "--front": front } as React.CSSProperties}
+            >
               {cities.map((c, i) => (
                 <button
                   key={c.id}
@@ -115,7 +121,7 @@ export default function Cities() {
                 </button>
               ))}
             </div>
-            <div className="flex gap-2">
+            <div className="stack__arrows flex gap-2">
               <button type="button" onClick={prev} aria-label="Previous city" className="stack__arrow">
                 <ArrowLeft aria-hidden size={20} />
               </button>

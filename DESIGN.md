@@ -18,7 +18,7 @@ Tokens live in `app/tokens.css` (Tailwind v4 `@theme static`, so every token is 
 - Accounts: GitHub, LinkedIn and X (@krishpranav5), the ones my GitHub profile links. Each is shown with its own mark (`components/primitives/Social.tsx`).
 - Cities are the ones I've been to: Singapore, where I'm based and work; Bengaluru, where I travel often; and San Francisco. Each is a 1200x411 pixel panorama in one golden-hour palette. San Francisco is my own image (`public/cool-bg.jpg`). Bengaluru (Vidhana Soudha, trumpet trees in bloom, an auto-rickshaw) and Singapore (Marina Bay Sands, the ArtScience Museum, the skyline, the Supertrees) are painted to match it by `scripts/cities.mjs`, at 400x137 and scaled 3x. Its kit draws a warped dithered sky, streaky cirrus, cumulus from sunlit puffs, glass towers, rippled reflections, foliage from leaf clumps and blooms, in colours sampled from the SF image.
 - At Uber I worked in its AI labs, on work used to train frontier AI models (my own account).
-- Off the clock is in my own words: 5,000 hours in CS:GO, 1,250 in Fortnite, professional sim racing, and trading crypto, meme coins and the stock market. Nothing is added to it.
+- Off the clock is in my own words: 6,250 hours in CS:GO, 1,250 in Fortnite, professional sim racing, and trading crypto, meme coins and the stock market. Nothing is added to it.
 - No education on the page.
 - Location is Singapore (`Asia/Singapore`, UTC+08:00), my main place and where I work; I travel often to Bengaluru. The local clock is 12-hour ("7:40 pm") and renders nothing until the client knows the time.
 
@@ -49,7 +49,7 @@ Light, with one dark chapter. The bar turns night while it sits over it.
 
 ## Grid and space
 
-The container is 1200px, centred, with a 40/24/20px gutter. The grid is 12 columns from 60rem and 4 below, with a 24px column gap (16px on phones). Section gaps are 160/112/80px (`--section-gap`), with `-s` and `-l` steps. Sections land flush under the 52px bar when jumped to (`lib/lenis.ts`).
+The container caps content at 1200px, centred, with a 40/24/20px gutter outside it; past that the gutters grow and the measure does not. The cap is an unlayered `.container` rule in `globals.css`, because Tailwind's own `container` utility would otherwise step it up with each breakpoint. The grid is 12 columns from 60rem and 4 below, with a 24px column gap (16px on phones). Section gaps are 160/112/80px (`--section-gap`), with `-s` and `-l` steps. Sections land flush under the 52px bar when jumped to (`lib/lenis.ts`).
 
 ## Surfaces
 
@@ -61,14 +61,19 @@ The container is 1200px, centred, with a 40/24/20px gutter. The grid is 12 colum
 
 ## Components
 
-- **Portrait** (`Portrait`): my illustrated portrait (`public/me/illustrated.jpeg`, 1792x2400), shown whole and still. The frame takes the image's exact proportions, so nothing is cropped, with the card radius, a 1px hairline and the pop shadow. It is served as AVIF, then WebP, then JPEG at 600, 900 and 1200 wide. In the hero it pairs with the text, centred with a 96px gap, at up to 440px wide.
+- **Portrait** (`Portrait`): my illustrated portrait (`public/me/illustrated.jpeg`, 1792x2400), shown whole and still. The frame takes the image's exact proportions, so nothing is cropped, with the card radius, a 1px hairline and the pop shadow. It is served as AVIF, then WebP, then JPEG at 600, 900 and 1200 wide. In the hero it pairs with the text, centred with a 96px gap (72px from 90rem), at up to 440px wide. Below 60rem it leads the hero, left-aligned with the text and sized from the screen's height (`.hero-portrait`), so the head, the line and Email me still fit on the first screen.
+- **Hello:** the headline ends on Phosphor's hand-wave in the headline's ink, bold weight, held to "Turing." so it never wraps alone. It waves once after the hero settles, and holds still under reduced motion.
 - **Social marks:** 44px round targets, muted ink that turns to ink on a paper-2 wash. They sit in the hero's action row, the mobile menu, and the contact links with their handles.
 - **Logo:** an SVG or PNG used as a CSS mask in `currentColor`, at an optical height per mark. With `inline`, it stands in for the company name inside a sentence, sized in em and dropped to sit on the baseline (`INLINE` in `Logo.tsx`).
-- **Story:** five lines in `.t-statement`, pinned on desktop while each lights from 18% to full ink (CSS scroll timeline). It is static and fully lit elsewhere.
+- **Story:** five lines in `.t-statement`, pinned while each lights from 18% to full ink (CSS scroll timeline), on phones too over a shorter runway (170vh). It is static and fully lit under reduced motion and without scroll timelines.
 - **Work bento:** spans of 12, 7+5 and 5+7. Each tile has a mark or a name, an optional real figure, a first-person h3, two sentences, and a footer with the title, dates and stack.
-- **Experience:** native `<details>` rows on one 12-column grid. A company with an official mark shows the mark, inline and middle-aligned on the row's first line (Crossing Hurdles' badge with its name beside it). A plus turns to a cross, and the detail settles in. The list ends on "6th grade".
-- **Off the clock:** a games tile (Counter-Strike's mark and the CS:GO wordmark, 5,000 as the figure, Fortnite beneath a hairline) beside the racing and trading lines, set large with their marks inline.
-- **Cities stack:** pixel panoramas piled like prints, the next card peeking above at 2deg. The front card follows a drag and, thrown past 90px or sent on by the arrows, flies out to the side and tucks in at the back; city names jump straight to one. Under 40rem the frame turns 4:3 and holds each city's landmark (`focus`). Without script the cards sit in a column; under reduced motion they swap without flying.
+- **Experience:** native `<details>` rows on one 12-column grid. A company with an official mark shows the mark, inline and middle-aligned on the row's first line (Crossing Hurdles' badge with its name beside it). A plus turns to a cross, and the detail settles in. Under a pointer, a row rests on a `paper-2` wash that reaches 16px into the gutter. The list ends on "6th grade".
+- **Off the clock:** trading as the big tile, then sim racing (the wheel heads the tile, the line is plain words), then a games tile (Counter-Strike's mark and the CS:GO wordmark, 6,250 as the `.t-figure`, Fortnite beneath a hairline). The tiles sit 24px apart, as in the work bento.
+- **Tools I reach for:** the six languages across one row (2, then 3, then 6 across), then the four tool groups beneath a hairline in four columns.
+- **Contribution calendar:** my last year on GitHub from `lib/github.generated.json`, one square per day in night ink by level, in the dark chapter above the sentence that gives the count (`ContributionGrid`). Phones show the last 26 weeks, wider screens all 53; both are drawn on the server, full width, with nothing to scroll.
+- **Tiles on phones:** 24px in (`p-6`), 32px from 40rem, 48px from 60rem.
+- **Cities stack:** pixel panoramas piled like prints, the next card peeking above at 2deg. The front card follows a drag and, thrown past 90px or sent on by the arrows, flies out to the side and tucks in at the back; city names jump straight to one. Under 40rem the frame turns 4:3 and holds each city's landmark (`focus`), the back cards peek in a little less, and the city names become one segmented control (a paper thumb sliding on a `paper-2` track) with no arrows, since swiping does their job. Without script the cards sit in a column; under reduced motion they swap without flying.
+- **Mobile menu:** the links settle in one after another each time it opens, then "I'm in Singapore, where it's 7:40 pm." The phone's toolbar colour (`theme-color`) follows the bar, night over the dark chapter.
 - **Command menu:** ⌘K, or the footer's "Press ⌘K" button (`kp:palette` event).
 
 ## Motion

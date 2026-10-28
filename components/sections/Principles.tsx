@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { Mark, markFor, Stack } from "@/components/primitives/Marks";
 import { capabilities, labs, languages, principles } from "@/lib/resume";
 
@@ -6,15 +7,18 @@ const keepHyphens = (text: string) =>
   text.split(/(\S+-\S+)/).map((part, i) => (i % 2 ? <span key={i} className="whitespace-nowrap">{part}</span> : part));
 
 // The frontier labs whose teams I work with, each as its own mark. This is the proof.
+// The separators sit outside the unbreakable spans, so a phone can wrap between labs.
 function Labs() {
   return (
     <>
       {labs.map((lab, i) => (
-        <span key={lab} className="whitespace-nowrap">
-          {markFor(lab) && <Mark name={markFor(lab)!} size="0.82em" className="mark-inline" />}
-          {lab}
+        <Fragment key={lab}>
+          <span className="whitespace-nowrap">
+            {markFor(lab) && <Mark name={markFor(lab)!} size="0.82em" className="mark-inline" />}
+            {lab}
+          </span>
           {i < labs.length - 2 ? ", " : i === labs.length - 2 ? " and " : ""}
-        </span>
+        </Fragment>
       ))}
     </>
   );
@@ -54,20 +58,20 @@ export default function Principles() {
           </ul>
         </div>
 
-        <div id="craft" className="cols mt-[var(--section-gap-s)] gap-y-10">
-          <div className="col-span-full md:col-span-5">
-            <h3 className="t-title">Tools I reach for</h3>
-            <p className="mt-6 text-muted">I write</p>
-            <ul className="mt-4 grid grid-cols-2 gap-x-6 gap-y-5 sm:grid-cols-3">
-              {languages.map((l) => (
-                <li key={l.name} className="inline-flex items-center gap-3 text-lg font-semibold tracking-[-0.015em]">
-                  {markFor(l.name) && <Mark name={markFor(l.name)!} size={26} />}
-                  {l.name}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <dl className="col-span-full grid grid-cols-1 gap-x-[var(--gap-columns)] gap-y-8 sm:grid-cols-2 md:col-span-5 md:col-start-8">
+        {/* The languages across one full row, then the four groups beneath, so neither
+            column ends early beside the other. */}
+        <div id="craft" className="mt-[var(--section-gap-s)]">
+          <h3 className="t-title">Tools I reach for</h3>
+          <p className="mt-6 text-muted">I write</p>
+          <ul className="mt-5 grid grid-cols-2 gap-x-[var(--gap-columns)] gap-y-6 sm:grid-cols-3 lg:grid-cols-6">
+            {languages.map((l) => (
+              <li key={l.name} className="flex min-w-0 items-center gap-3 text-lg font-semibold tracking-[-0.015em] md:text-xl">
+                {markFor(l.name) && <Mark name={markFor(l.name)!} size={30} />}
+                <span className="min-w-0">{l.name}</span>
+              </li>
+            ))}
+          </ul>
+          <dl className="mt-14 grid grid-cols-1 gap-x-[var(--gap-columns)] gap-y-10 border-t border-rule pt-10 sm:grid-cols-2 lg:grid-cols-4">
             {capabilities.map((c) => (
               <div key={c.title}>
                 <dt className="font-semibold">{c.title}</dt>

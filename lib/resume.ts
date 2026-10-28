@@ -16,7 +16,7 @@ export const identity = {
   locationShort: "Singapore",
   timeZone: "Asia/Singapore",
   utc: "UTC+08:00",
-  headline: "I’m Krisna Pranav, a senior AI/ML engineer at Turing. 👋",
+  headline: "I’m Krisna Pranav, a senior AI/ML engineer at Turing.",
   statement: "I’ve been coding since 6th grade.",
   links: {
     email: "krisna.pranav@gmail.com",
@@ -484,7 +484,7 @@ export const origin = {
   body: [
     "The first language I ever learned was ",
     { mark: "scratch", text: "Scratch", href: "https://scratch.mit.edu/" },
-    ", blocks snapped together on screen. It grew into trading platforms, mobile apps and a desktop agent in Rust, one project at a time, years before any of it became a job.",
+    ", blocks snapped together on screen. From there it was one project at a time, years before any of it became a job.",
   ],
   milestones: [
     { when: "6th grade", what: "White-hat hacking, and my first language, Scratch." },

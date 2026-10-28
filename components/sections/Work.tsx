@@ -41,7 +41,7 @@ function Tile({ item: w }: { item: WorkItem }) {
     <article
       id={`case-${w.id}`}
       data-reveal
-      className={clsx("tile flex flex-col p-8 md:p-12", SPAN[w.id])}
+      className={clsx("tile flex flex-col p-6 sm:p-8 md:p-12", SPAN[w.id])}
     >
       <div className="flex min-h-14 items-center">
         {w.logo ? <Logo name={w.logo} /> : <span className="text-[1.625rem] font-semibold leading-none tracking-[-0.035em]">{r.company}</span>}

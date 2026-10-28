@@ -1,4 +1,5 @@
 import clsx from "clsx";
+import ContributionGrid from "@/components/primitives/ContributionGrid";
 import { Logo } from "@/components/primitives/Logo";
 import { Mark } from "@/components/primitives/Marks";
 import { github, identity, repoNotes, upstreamFixes, type LogoKey, type UpstreamFix } from "@/lib/resume";
@@ -35,7 +36,10 @@ export default function OpenSource() {
           ))}
         </div>
 
-        <p className="mt-24 max-w-[40ch] t-lead text-night-muted">
+        {/* My last year on GitHub, day by day, with the count said beneath it. */}
+        <ContributionGrid className="mt-24" />
+
+        <p className="mt-10 max-w-[40ch] t-lead text-night-muted">
           In the last year I made <span className="text-night-ink">{github.contributions.total.toLocaleString("en-US")} contributions</span>{" "}
           on GitHub, across <span className="text-night-ink">{github.publicRepos} public repositories</span>.
           {vesper && (
@@ -87,7 +91,7 @@ function PrCard({ fix, i }: { fix: UpstreamFix; i: number }) {
     <article
       data-reveal
       style={{ "--i": i } as React.CSSProperties}
-      className="flex min-w-0 flex-col rounded-card bg-night-2 p-8 md:p-10"
+      className="flex min-w-0 flex-col rounded-card bg-night-2 p-6 sm:p-8 md:p-10"
     >
       <header className="flex items-center gap-4">
         <span className="flex size-12 shrink-0 items-center justify-center rounded-inner bg-night-3">
@@ -106,8 +110,8 @@ function PrCard({ fix, i }: { fix: UpstreamFix; i: number }) {
       <h3 className="mt-8 max-w-[24ch] t-title">{voice.headline}</h3>
       <p className="mt-3 text-night-muted">{fix.summary}</p>
 
-      <div className="-mx-8 mt-8 border-y border-night-rule md:-mx-10">
-        <p className="truncate border-b border-night-rule px-8 py-3 font-outlier text-xs text-night-muted md:px-10">{fix.file}</p>
+      <div className="-mx-6 mt-8 border-y border-night-rule sm:-mx-8 md:-mx-10">
+        <p className="truncate border-b border-night-rule px-6 py-3 font-outlier text-xs text-night-muted sm:px-8 md:px-10">{fix.file}</p>
         <div
           className="diff-scroll overflow-x-auto"
           data-lenis-prevent
@@ -120,7 +124,7 @@ function PrCard({ fix, i }: { fix: UpstreamFix; i: number }) {
               {fix.diff.map((l, k) =>
                 l.t === "~" ? (
                   <tr key={k}>
-                    <td colSpan={3} className="px-8 text-night-muted/70 md:px-10">
+                    <td colSpan={3} className="px-6 text-night-muted/70 sm:px-8 md:px-10">
                       {"…"} {l.text}
                     </td>
                   </tr>
@@ -133,7 +137,7 @@ function PrCard({ fix, i }: { fix: UpstreamFix; i: number }) {
                       l.t === " " && "text-night-muted"
                     )}
                   >
-                    <td className="w-16 select-none pl-8 pr-3 text-right text-night-muted/60 no-underline md:w-[4.5rem] md:pl-10">{l.new ?? l.old ?? ""}</td>
+                    <td className="w-14 select-none pl-6 pr-3 text-right text-night-muted/60 no-underline sm:w-16 sm:pl-8 md:w-[4.5rem] md:pl-10">{l.new ?? l.old ?? ""}</td>
                     <td className="w-5 select-none text-center">{l.t === " " ? "" : l.t === "-" ? "−" : "+"}</td>
                     <td className="whitespace-pre pr-6">{l.text}</td>
                   </tr>

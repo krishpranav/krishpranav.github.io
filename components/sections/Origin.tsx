@@ -37,7 +37,7 @@ export default function Origin() {
             <h2 id="start-title" data-reveal className="max-w-[11ch] t-section">
               {origin.heading}
             </h2>
-            <p data-reveal style={{ "--i": 1 } as React.CSSProperties} className="mt-7 max-w-[26ch] t-statement">
+            <p data-reveal style={{ "--i": 1 } as React.CSSProperties} className="mt-6 max-w-[30ch] t-lead">
               {origin.lead}
             </p>
             <p data-reveal style={{ "--i": 2 } as React.CSSProperties} className="mt-7 max-w-[44ch] text-lg text-ink-2">

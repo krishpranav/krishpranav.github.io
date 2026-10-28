@@ -8,6 +8,10 @@ import { NAV_LINKS } from "./nav-links";
 
 const BAR_LINKS = NAV_LINKS.filter((l) => l.href !== "#contact");
 
+// The browser's own chrome, as hex: paper (as in layout.tsx), and the night token
+// (oklch 15.5% 0.004 270) for while the bar sits over the dark chapter.
+const CHROME = { paper: "#fcfcfd", night: "#0b0c0e" };
+
 /* A slim translucent bar: my name, three places to go, and the one action. */
 export default function Nav({
   onMenu,
@@ -92,6 +96,14 @@ export default function Nav({
       slot.disconnect();
     };
   }, []);
+
+  // The phone's toolbar follows the bar: dark over the dark chapter, paper elsewhere and
+  // whenever the menu sheet is open.
+  useEffect(() => {
+    document
+      .querySelector('meta[name="theme-color"]')
+      ?.setAttribute("content", night && !menuOpen ? CHROME.night : CHROME.paper);
+  }, [night, menuOpen]);
 
   return (
     <header

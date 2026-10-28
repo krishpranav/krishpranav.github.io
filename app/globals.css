@@ -24,6 +24,9 @@
 /* Hallmark · reworded "AI & agents", "Distributed systems", "Cloud & MLOps", "Backend & data", and "1,501 contributions in the last year" from heads into terms and a sentence · the four are terms in "Tools I reach for", and the count is said in a sentence in the dark chapter */
 /* Hallmark · dropped 21:56, 05:30, 0.11, 93ms, 100%, 1%, 0%, 50%, 5%, 25%, 39053905, 39063909, 39133913 · the clock reads Singapore time in 12-hour form now, the rest were the retired widgets' simulated values and the diff's paired line numbers, now one column */
 /* Hallmark · reworded "12,000" and "0.95+" out of the page · the interlude's point count and the old résumé's recall figure, both retired on the records above */
+/* Hallmark · redesign 2026-10-28 · polish, phone first · the container caps content at 1200px (Tailwind's own container had widened it to 1360 at 1440 and 1440 at 1920, Floor 14); the labs line wraps on phones; the portrait leads the phone hero; the story lights on phones; the city names are a segmented control on phones; tiles 24px apart and 24px in on phones; the games tile sets 6,250 as its figure; the tools rebalanced into rows; experience rows take a wash under a pointer; the toolbar follows the dark chapter */
+/* Hallmark · redesign 2026-10-28 · dropped the 👋 emoji ending the headline (Floor 11, an emoji as an icon) · the owner chose an ink hand-wave mark in its place, set like the page's other inline marks, that waves once */
+/* Hallmark · redesign 2026-10-28 · added my GitHub contribution calendar to the dark chapter (lib/github.generated.json, real) · reworded the start's body "It grew into trading platforms, mobile apps and a desktop agent in Rust, one project at a time, years before any of it became a job." to "From there it was one project at a time, years before any of it became a job." · the story says the same line one screen earlier */
 @import "tailwindcss";
 @import "./tokens.css";
 @import "./base.css" layer(base);
@@ -347,6 +350,56 @@ h3 {
   }
 }
 
+/* The container, unlayered so Tailwind's own breakpoint-stepped `container` cannot widen
+   it: the content caps at 1200px and only the gutters grow past that. */
+.container {
+  max-width: calc(var(--container) + 2 * var(--gutter));
+}
+
+/* On phones and tablets my portrait leads the hero, sized from the screen's height (and
+   its own 1792:2400 proportions) so the head, the line and Email me still fit beneath it
+   on the first screen. */
+@media (width < 40rem) {
+  .hero-portrait {
+    width: calc(clamp(11rem, 100svh - 29rem, 19rem) * 1792 / 2400);
+  }
+}
+@media (40rem <= width < 60rem) {
+  .hero-portrait {
+    width: calc(clamp(14rem, 100svh - 31rem, 26rem) * 1792 / 2400);
+  }
+}
+
+/* The hello at the end of the headline: an ink mark that waves once, after the hero has
+   settled, pivoting at the wrist. */
+.wave {
+  display: inline-block;
+  margin-left: 0.16em;
+  vertical-align: -0.08em;
+  transform-origin: 70% 85%;
+  animation: wave 1.6s var(--ease-in-out) 0.9s both;
+}
+@keyframes wave {
+  0%,
+  60%,
+  100% {
+    transform: rotate(0deg);
+  }
+  10%,
+  30% {
+    transform: rotate(14deg);
+  }
+  20% {
+    transform: rotate(-8deg);
+  }
+  40% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+}
+
 /* My portrait, shown whole: the frame takes the image's own proportions (set inline),
    so nothing is cropped. A hairline ring keeps its edge crisp on the paper. */
 .portrait-frame {
@@ -404,6 +457,30 @@ h3 {
 .xp > summary:focus-visible {
   outline-offset: 6px;
   border-radius: var(--radius-inner);
+}
+/* Under a pointer, the row rests on a soft wash that reaches a little into the gutter. */
+.xp > summary {
+  position: relative;
+  isolation: isolate;
+}
+.xp > summary::before {
+  content: "";
+  position: absolute;
+  inset: 0 calc(-1 * var(--space-md));
+  z-index: -1;
+  border-radius: var(--radius-inner);
+  background: var(--color-paper-2);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur-short) var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .xp > summary:hover::before {
+    opacity: 1;
+  }
+  .xp > summary:hover .xp__toggle {
+    background: var(--color-paper);
+  }
 }
 .xp[open] .xp__panel {
   animation: settle var(--dur-long) var(--ease-out) both;
@@ -547,6 +624,56 @@ html:not(.js) .stack__controls {
     bottom: var(--space-sm);
   }
 }
+@media (width < 40rem) {
+  /* The back cards peek in a little less, so their corners stay inside the gutters. */
+  .js .stack__card[data-p="1"] {
+    transform: translate3d(1%, -6%, 0) rotate(1.2deg) scale(0.95);
+  }
+  .js .stack__card[data-p="2"] {
+    transform: translate3d(-2%, -11%, 0) rotate(-1.5deg) scale(0.9);
+  }
+
+  /* The city names become one segmented control: equal segments on a grey track, and a
+     paper thumb that slides under the chosen city. Swiping does the arrows' job here. */
+  .stack__tabs {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(var(--n), minmax(0, 1fr));
+    gap: 0;
+    width: 100%;
+    padding: var(--space-2xs);
+    border-radius: var(--radius-pill);
+    background: var(--color-paper-2);
+  }
+  .stack__tabs::before {
+    content: "";
+    position: absolute;
+    top: var(--space-2xs);
+    bottom: var(--space-2xs);
+    left: var(--space-2xs);
+    width: calc((100% - 2 * var(--space-2xs)) / var(--n));
+    border-radius: var(--radius-pill);
+    background: var(--color-paper);
+    box-shadow: 0 1px 3px color-mix(in oklab, var(--color-ink) 14%, transparent);
+    transform: translateX(calc(var(--front) * 100%));
+    transition: transform var(--dur-long) var(--ease-out);
+  }
+  .stack__tabs .stack__tab {
+    position: relative;
+    padding-inline: var(--space-2xs);
+  }
+  .stack__tabs .stack__tab:is(:hover, [aria-pressed="true"]) {
+    background: transparent;
+  }
+  .stack__arrows {
+    display: none;
+  }
+}
+@media (width < 22.5rem) {
+  .stack__tabs .stack__tab {
+    font-size: var(--text-xs);
+  }
+}
 .stack__tab {
   min-height: 44px;
   background: transparent;
@@ -597,6 +724,11 @@ html:not(.js) .stack__controls {
     transform: translateY(16px);
   }
 }
+/* The menu sheet uses the same rise, quicker, since it is asked for. */
+#mobile-menu .rise {
+  animation-duration: var(--dur-long);
+  animation-delay: calc(var(--i, 0) * 45ms);
+}
 
 /* The page's one reveal: content shows without script and under reduced motion. */
 .js [data-reveal] {
@@ -613,12 +745,13 @@ html:not(.js) .stack__controls {
 }
 
 /* The story, the page's one scroll pattern (a pinned chapter): each line of the
-   statement lights from grey to ink while the section is pinned. Static elsewhere. */
+   statement lights from grey to ink while the section is pinned, on phones too, over a
+   shorter runway. Static under reduced motion and without scroll timelines. */
 .story {
   position: relative;
 }
 @supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) and (min-width: 40rem) {
+  @media (prefers-reduced-motion: no-preference) {
     .story {
       min-height: 210vh;
       view-timeline: --story block;
@@ -626,6 +759,14 @@ html:not(.js) .stack__controls {
     .story__pin {
       position: sticky;
       top: calc(var(--nav-h) + 12vh);
+    }
+    @media (width < 40rem) {
+      .story {
+        min-height: 170vh;
+      }
+      .story__pin {
+        top: calc(var(--nav-h) + 8vh);
+      }
     }
     .story__line {
       animation: story-line linear both;
@@ -657,10 +798,13 @@ html:not(.js) .stack__controls {
     transform: none;
     transition: none;
   }
-  .rise {
+  .rise,
+  .wave {
     animation: none;
   }
-  .xp__toggle {
+  .xp__toggle,
+  .xp > summary::before,
+  .stack__tabs::before {
     transition: none;
   }
   .xp[open] .xp__panel,

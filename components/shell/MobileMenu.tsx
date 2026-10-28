@@ -6,6 +6,7 @@ import { Button } from "@/components/primitives/Button";
 import { SocialLinks } from "@/components/primitives/Social";
 import { identity } from "@/lib/resume";
 import { getLenis } from "@/lib/lenis";
+import LocalClock from "./LocalClock";
 import { NAV_LINKS } from "./nav-links";
 
 /* A full sheet under the bar; the bar's own toggle closes it. */
@@ -39,18 +40,24 @@ export default function MobileMenu({ open, onClose }: { open: boolean; onClose: 
       )}
       style={{ zIndex: "var(--z-sticky)" }}
     >
+      {/* The links settle in one after another each time the sheet opens (.rise), then
+          where I am and my time there. */}
       <nav aria-label="Sections">
         <ul>
-          {NAV_LINKS.map(({ label, href }) => (
-            <li key={href}>
+          {NAV_LINKS.map(({ label, href }, i) => (
+            <li key={href} className="rise" style={{ "--i": i } as React.CSSProperties}>
               <a href={href} onClick={onClose} className="block py-3 text-[2rem] font-semibold leading-tight tracking-[-0.03em]">
                 {label}
               </a>
             </li>
           ))}
         </ul>
+        <p className="rise mt-8 text-muted" style={{ "--i": NAV_LINKS.length } as React.CSSProperties}>
+          I&rsquo;m in {identity.locationShort}
+          <LocalClock before=", where it’s " />.
+        </p>
       </nav>
-      <div className="grid gap-3">
+      <div className="rise grid gap-3" style={{ "--i": NAV_LINKS.length + 1 } as React.CSSProperties}>
         <Button href={`mailto:${identity.links.email}`} variant="primary" onClick={onClose}>
           Email me
         </Button>
